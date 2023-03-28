@@ -1,0 +1,857 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_poolToken",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_dailyReturnRate",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_depositFee",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_withdrawFee",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_feeReceiver",
+				"type": "address"
+			}
+		],
+		"name": "createNewPool",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_poolToken",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_dailyReturnRate",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_depositFee",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_withdrawFee",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_feeReceiver",
+				"type": "address"
+			}
+		],
+		"name": "modifyPool",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_tokenAddress",
+				"type": "address"
+			}
+		],
+		"name": "ownerWithdrawToken",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_poolToken",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_dailyReturnRate",
+				"type": "uint256"
+			}
+		],
+		"name": "setDailyReturnRate",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_poolToken",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_depositFee",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_withdrawFee",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_feeReceiver",
+				"type": "address"
+			}
+		],
+		"name": "setFeeInfo",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_poolToken",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_feeReceiver",
+				"type": "address"
+			}
+		],
+		"name": "setFeeReceiver",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_poolToken",
+				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "_poolPaused",
+				"type": "bool"
+			}
+		],
+		"name": "setPausePool",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_poolToken",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "stake",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "token",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "Stake",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_poolToken",
+				"type": "address"
+			}
+		],
+		"name": "withdrawFull",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "token",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "WithdrawFull",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_poolToken",
+				"type": "address"
+			}
+		],
+		"name": "withdrawProfit",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "token",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "pending",
+				"type": "uint256"
+			}
+		],
+		"name": "WithdrawProfit",
+		"type": "event"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "allPoolInfos",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "pid",
+				"type": "uint256"
+			},
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "tokenAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "symbol",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "decimals",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct CAKEMOON_StakingPool.TokenInfo",
+				"name": "poolTokenInfo",
+				"type": "tuple"
+			},
+			{
+				"internalType": "uint256",
+				"name": "dailyReturnRate",
+				"type": "uint256"
+			},
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "depositFee",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "withdrawFee",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "feeReceiver",
+						"type": "address"
+					}
+				],
+				"internalType": "struct CAKEMOON_StakingPool.FeeInfo",
+				"name": "feeInfo",
+				"type": "tuple"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalStaked",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalClaimedProfit",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalFeeCollected",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "depositFeeCollected",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "withdrawFeeCollected",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "isPaused",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "pausedTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "resumedTime",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAllPoolInfos",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "pid",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "tokenAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "symbol",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "decimals",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct CAKEMOON_StakingPool.TokenInfo",
+						"name": "poolTokenInfo",
+						"type": "tuple"
+					},
+					{
+						"internalType": "uint256",
+						"name": "dailyReturnRate",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "depositFee",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "withdrawFee",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "feeReceiver",
+								"type": "address"
+							}
+						],
+						"internalType": "struct CAKEMOON_StakingPool.FeeInfo",
+						"name": "feeInfo",
+						"type": "tuple"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalStaked",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalClaimedProfit",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalFeeCollected",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "depositFeeCollected",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "withdrawFeeCollected",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isPaused",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pausedTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "resumedTime",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct CAKEMOON_StakingPool.PoolInfo[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getPoolCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_poolToken",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "getUserStatus",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastClaimedTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "stakedTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalClaimedProfit",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "depositFeeAmount",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct CAKEMOON_StakingPool.UserInfo",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_poolToken",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "pendingProfit",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "poolInfo",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "pid",
+				"type": "uint256"
+			},
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "tokenAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "symbol",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "decimals",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct CAKEMOON_StakingPool.TokenInfo",
+				"name": "poolTokenInfo",
+				"type": "tuple"
+			},
+			{
+				"internalType": "uint256",
+				"name": "dailyReturnRate",
+				"type": "uint256"
+			},
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "depositFee",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "withdrawFee",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "feeReceiver",
+						"type": "address"
+					}
+				],
+				"internalType": "struct CAKEMOON_StakingPool.FeeInfo",
+				"name": "feeInfo",
+				"type": "tuple"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalStaked",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalClaimedProfit",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalFeeCollected",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "depositFeeCollected",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "withdrawFeeCollected",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "isPaused",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "pausedTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "resumedTime",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_poolToken",
+				"type": "address"
+			}
+		],
+		"name": "profitRemainingInPool",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "userInfo",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lastClaimedTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "stakedTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalClaimedProfit",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "depositFeeAmount",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "WETH",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

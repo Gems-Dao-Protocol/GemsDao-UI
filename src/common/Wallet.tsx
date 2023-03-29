@@ -14,14 +14,11 @@ const WalletIcon = () => {
 }
 
 function BalanceAndDisconnect() {
-    const { deactivate, account, connector } = useEthers()
+    const { deactivate, account } = useEthers()
 
     const handleDisconnect = async () => {
         await localforage.setItem("connectionStatus", false)
         deactivate()
-        if (connector) {
-            (connector as any)?.deactivate()
-        }
     }
 
     return (

@@ -38,7 +38,7 @@ const providerOptions = {
 }
 
 export const Web3ModalButton = () => {
-  const { account, chainId, connector, activate, deactivate } = useEthers()
+  const { account, chainId, activate, deactivate } = useEthers()
   const [activateError, setActivateError] = useState('')
   const { currentChainId } = useGemsDao()
   const { error } = useEthers()
@@ -89,9 +89,6 @@ export const Web3ModalButton = () => {
         }
 
         deactivate()
-        if (connector) {
-          (connector as any)?.deactivate()
-        }
       }
     }
   }

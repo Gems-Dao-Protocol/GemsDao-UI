@@ -1,4 +1,4 @@
-import { JsonRpcSigner, Web3Provider, JsonRpcProvider } from '@ethersproject/providers'
+import { JsonRpcSigner, Web3Provider, JsonRpcProvider, FallbackProvider } from '@ethersproject/providers'
 
 import { AddressZero } from '@ethersproject/constants'
 import { BigNumber, ethers, utils } from 'ethers'
@@ -63,15 +63,15 @@ export function shortenAddress(address: string, chars = 4): string {
     return `${parsed.substring(0, chars + 2)}...${parsed.substring(42 - chars)}`
 }
 
-export function getSigner(library: JsonRpcProvider, account: string): JsonRpcSigner {
-    return library.getSigner(account).connectUnchecked()
+export function getSigner(library: JsonRpcProvider | FallbackProvider, account: string): JsonRpcSigner {
+    return (library as Web3Provider).getSigner(account).connectUnchecked()
 }
 
-export function getProviderOrSigner(library: JsonRpcProvider, account?: string): JsonRpcProvider | JsonRpcSigner {
+export function getProviderOrSigner(library: JsonRpcProvider | FallbackProvider, account?: string): JsonRpcProvider | FallbackProvider | JsonRpcSigner {
     return account ? getSigner(library, account) : library
 }
 
-export function getContract(address: string, ABI: any, library: JsonRpcProvider, account?: string): Contract {
+export function getContract(address: string, ABI: any, library: JsonRpcProvider | FallbackProvider, account?: string): Contract {
     if (!isAddress(address) || address === AddressZero) {
         throw Error(`Invalid 'address' parameter '${address}'.`)
     }

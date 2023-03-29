@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useEffect, useState } from "react"
+import React, { PropsWithChildren } from "react"
 import Head from 'next/head'
 import { useRouter } from "next/router"
 import { useMediaQuery } from "@mui/material"

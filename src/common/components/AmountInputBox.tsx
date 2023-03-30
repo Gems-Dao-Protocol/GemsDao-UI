@@ -2,23 +2,19 @@ import InputBoxContainer from './InputBoxContainer'
 
 interface InputBoxProps {
     id: string
-    placeHolder: string
+    placeholder: string
     decimals: number
     onChange: (val: any) => void
-    handleFocus: () => void
-    handleBlur: () => void
 }
 
-export default function AmountInputBox({ id, placeHolder, decimals = 18, onChange, handleFocus, handleBlur }: InputBoxProps) {
+export default function AmountInputBox({ id, placeholder, decimals = 18, onChange }: InputBoxProps) {
     return (
         <InputBoxContainer>
             <input
                 id={id}
                 type="text"
-                className="token-amount-input w-full bg-white text-[#000] text-[18px] md:text-[20px] rounded-md block w-full p-0 focus:outline-none min-w-[80px]"
-                placeholder={placeHolder}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
+                className="token-amount-input w-full bg-[#000A21] text-white text-[18px] md:text-[20px] rounded-md block w-full p-0 focus:outline-none min-w-[80px]"
+                placeholder={placeholder}
                 onKeyPress={(e) => {
                     let ev: any = e.target;
                     ((ev.value.toString().indexOf('.') >= 0) && ev.value.toString().substring(ev.value.toString().indexOf('.') + 1).length >= decimals) && e.preventDefault();

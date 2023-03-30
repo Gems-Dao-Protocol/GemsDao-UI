@@ -18,7 +18,7 @@ export const HTTP_METHODS: {
 
 export const NFT_CAs: { [chainId in ChainId]?: any } = {
     [ChainId.Mainnet]: '',
-    [ChainId.Goerli]: '',
+    [ChainId.Goerli]: '0x6f3ccE2e1D52276B1372Ff90899D949E5fFEa02E',
     [ChainId.BSC]: '',
     [ChainId.BSCTestnet]: '0x52f0f3cf46A3042876C9023B153Db0105bA31032',
     [ChainId.Cronos]: '',

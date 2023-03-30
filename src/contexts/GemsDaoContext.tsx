@@ -1,11 +1,11 @@
 import { CHAIN_ITEMS } from '@app/common/layout/SupportChainsConstants'
-import { calculateGasMargin, getContract, getURL_FromIPFS_URI } from '@app/utils/utils'
+import { calculateGasMargin, getContract, getURL_FromIPFS_URI, isWrappedEther } from '@app/utils/utils'
 import { useEthers } from '@usedapp/core'
 import { BigNumber, Contract } from 'ethers'
 import React, { useContext, useEffect, useState } from 'react'
 import NFT_ABI from '@app/constants/contracts/abis/nft.json'
 import { TransactionResponse } from '@ethersproject/providers'
-import { NFT_CAs, RpcProviders } from '@app/constants/AppConstants'
+import { Native_Currencies, NFT_CAs, RpcProviders, Wrapped_Ethers } from '@app/constants/AppConstants'
 import { useTokenCallback } from '@app/hooks/hooks'
 import useRefresh from '@app/hooks/useRefresh'
 import useMemoizedState from '@app/hooks/useMemorizedState'
@@ -14,11 +14,16 @@ declare type Maybe<T> = T | null | undefined
 
 export interface INFTINfo {
     id: number
-    maxWallet: BigNumber
-    maxSupply: BigNumber
+    maxWallet: number
+    maxSupply: number
     price: BigNumber
     totalMinted: number
     metadata: any
+}
+
+export interface IUserMinted {
+    id: number
+    mintedAmount: number
 }
 
 export interface ITokenInfo {
@@ -32,16 +37,18 @@ export interface IGemsDaoContext {
     currentChainId: number
     allNFTInfos: INFTINfo[]
     currencyTokenInfo: ITokenInfo
-    mintSingle: (id: BigNumber, amount: BigNumber) => Promise<any>
-    mintBatch: (ids: BigNumber[], amounts: BigNumber[]) => Promise<any>
+    mintedInfos: IUserMinted[]
+    mintSingle: (id: BigNumber, amount: BigNumber, value: BigNumber) => Promise<any>
+    mintBatch: (ids: BigNumber[], amounts: BigNumber[], value: BigNumber) => Promise<any>
     updateAllNFTInfo: () => Promise<any>
     updateNFTInfo: (id: number) => Promise<any>
+    updateMintedInfo: (id: number) => Promise<any>
 }
 
 const GemsDaoContext = React.createContext<Maybe<IGemsDaoContext>>(null)
 
 export const GemsDaoProvider = ({ children = null as any }) => {
-    const [currentChainId, setCurrentChainId] = useState(CHAIN_ITEMS[0])
+    const [currentChainId, setCurrentChainId] = useState(CHAIN_ITEMS[1])
     const [allNFTInfos, setAllNFTInfos] = useState<INFTINfo[]>([])
     const { account, library } = useEthers()
     const [currencyTokenInfo, setCurrencyTokenInfo] = useMemoizedState<ITokenInfo>(undefined)
@@ -50,14 +57,15 @@ export const GemsDaoProvider = ({ children = null as any }) => {
     const { slowRefresh } = useRefresh()
     const [updatedTime, setUpdatedTime] = useState(0)
     const [queueAllNFTInfo, setQueueAllNFTInfo] = useState({ updatedTime: 0, data: undefined })
+    const [mintedInfos, setMintedInfos] = useState<IUserMinted[]>([])
 
-    const mintSingle = async function (id: BigNumber, amount: BigNumber) {
+    const mintSingle = async function (id: BigNumber, amount: BigNumber, value: BigNumber) {
         if (!account || !library) return
         const nftContract: Contract = getContract(NFT_CAs[currentChainId], NFT_ABI, library as any, account ? account : undefined)
-        return nftContract.estimateGas.mintSingle(id, amount).then(estimatedGasLimit => {
+        return nftContract.estimateGas.mintSingle(id, amount, { value: isWrappedEther(currentChainId, currencyTokenInfo.address) ? value : BigNumber.from(0) }).then(estimatedGasLimit => {
             const gas = estimatedGasLimit
             return nftContract.mintSingle(id, amount, {
-                gasLimit: calculateGasMargin(gas)
+                gasLimit: calculateGasMargin(gas), value: isWrappedEther(currentChainId, currencyTokenInfo.address) ? value : BigNumber.from(0)
             }).then((response: TransactionResponse) => {
                 return response.wait().then((res: any) => {
                     return { status: res.status, hash: response.hash }
@@ -66,13 +74,13 @@ export const GemsDaoProvider = ({ children = null as any }) => {
         })
     }
 
-    const mintBatch = async function (ids: BigNumber[], amounts: BigNumber[]) {
+    const mintBatch = async function (ids: BigNumber[], amounts: BigNumber[], value: BigNumber) {
         if (!account || !library) return
         const nftContract: Contract = getContract(NFT_CAs[currentChainId], NFT_ABI, library as any, account ? account : undefined)
         return nftContract.estimateGas.mintBatch(ids, amounts).then(estimatedGasLimit => {
             const gas = estimatedGasLimit
             return nftContract.mintBatch(ids, amounts, {
-                gasLimit: calculateGasMargin(gas)
+                gasLimit: calculateGasMargin(gas), value: isWrappedEther(currentChainId, currencyTokenInfo.address) ? value : BigNumber.from(0)
             }).then((response: TransactionResponse) => {
                 return response.wait().then((res: any) => {
                     return { status: res.status, hash: response.hash }
@@ -96,14 +104,20 @@ export const GemsDaoProvider = ({ children = null as any }) => {
         return res
     }
 
+    const fetchBalanceOfNFT = async (nftContract: Contract, id: number) => {
+        const res = await nftContract.balanceOf(account, BigNumber.from(id))
+        return res
+    }
+
     const getNFTINfoAndMetadata = async (nftInfo: any, uri: string) => {
-        let metadata = await fetch(uri).then((res) => res.json())
+        const url = getURL_FromIPFS_URI(uri)
+        let metadata = await fetch(url).then((res) => res.json())
         const imgURL = getURL_FromIPFS_URI(metadata.image)
         metadata = { ...metadata, image: imgURL }
         const nft: INFTINfo = {
             id: Number(nftInfo.id),
-            maxWallet: nftInfo.maxWallet,
-            maxSupply: nftInfo.maxSupply,
+            maxWallet: Number(nftInfo.maxWallet),
+            maxSupply: Number(nftInfo.maxSupply),
             price: nftInfo.price,
             totalMinted: Number(nftInfo.totalMinted),
             metadata: metadata
@@ -126,9 +140,9 @@ export const GemsDaoProvider = ({ children = null as any }) => {
         const chainId = currentChainId;
         const nftContract: Contract = getContract(NFT_CAs[currentChainId], NFT_ABI, RpcProviders[chainId], account ? account : undefined)
         const currencyTokenCA = await nftContract.currencyToken()
-        const tokenInfo = await tokenCallback(currencyTokenCA, chainId)
+        let tokenInfo = await tokenCallback(currencyTokenCA, chainId)
         if (!tokenInfo) return
-
+        if (isWrappedEther(chainId, tokenInfo.address)) tokenInfo = { ...tokenInfo, symbol: Native_Currencies[chainId].symbol, name: Native_Currencies[chainId].name }
         setCurrencyTokenInfo(tokenInfo)
 
         await fetchAllNFTInfo(nftContract).then(async result => {
@@ -168,9 +182,50 @@ export const GemsDaoProvider = ({ children = null as any }) => {
         } catch (err) { }
     }
 
+    const updateAllMintedInfo = async () => {
+        const chainId = currentChainId;
+        const nftContract: Contract = getContract(NFT_CAs[currentChainId], NFT_ABI, RpcProviders[chainId], account ? account : undefined)
+        try {
+            let minted: IUserMinted[] = []
+            await Promise.all(allNFTInfos.map(async each => {
+                try {
+                    const res = await fetchBalanceOfNFT(nftContract, each.id)
+                    minted.push({
+                        id: each.id,
+                        mintedAmount: Number(res)
+                    })
+                } catch (err) { }
+            }))
+            minted.sort((a, b) => a.id - b.id)
+            setMintedInfos(minted)
+        } catch (err) { }
+    }
+
+    const updateMintedInfo = async (id: number) => {
+        const chainId = currentChainId;
+        const nftContract: Contract = getContract(NFT_CAs[currentChainId], NFT_ABI, RpcProviders[chainId], account ? account : undefined)
+        try {
+            const res = await fetchBalanceOfNFT(nftContract, id)
+            const index = allNFTInfos.findIndex(each => each.id === id)
+            if (index >= 0) {
+                let items = [...mintedInfos]
+                items[index] = { id: id, mintedAmount: Number(res) }
+                setMintedInfos(items)
+            }
+        } catch (err) { }
+    }
+
     useEffect(() => {
         if (!isLoadingAllNFTs) updateAllNFTInfo()
     }, [slowRefresh])
+
+    useEffect(() => {
+        if (allNFTInfos.length > 0 && account) {
+            updateAllMintedInfo()
+        } else {
+            setMintedInfos([])
+        }
+    }, [allNFTInfos, account])
 
     return (
         <GemsDaoContext.Provider
@@ -178,10 +233,12 @@ export const GemsDaoProvider = ({ children = null as any }) => {
                 currentChainId,
                 allNFTInfos,
                 currencyTokenInfo,
+                mintedInfos,
                 mintSingle,
                 mintBatch,
                 updateAllNFTInfo,
-                updateNFTInfo
+                updateNFTInfo,
+                updateMintedInfo
             }}
         >
             {children}

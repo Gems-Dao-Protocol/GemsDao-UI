@@ -20,14 +20,15 @@ export default function Modal({
 }: PopupProps) {
 
     const handleWindowClick = (event) => {
-        const modal = document.getElementById("wolf-modal");
+        const modal = document.getElementById("id-gemsdao-modal");
         if (event.target.id == modal.id) {
             handleClose()
         }
     }
+    
     return (
         <div
-            id="wolf-modal"
+            id="id-gemsdao-modal"
             aria-hidden="true"
             role="dialog"
             style={{ backgroundColor: '#00000020', display: isOpen ? "flex" : "none" }}

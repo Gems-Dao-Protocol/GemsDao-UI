@@ -212,13 +212,6 @@ export const reqOptionsAuthorized = (userToken: string, contentType: string = 'a
     }
 }
 
-export const getSwapAmountInMax = (amountIn: BigNumber, slip: number) => { //slippage is %    
-    const slippage = Math.round(slip * 100)
-    return amountIn.add(amountIn.mul(BigNumber.from(slippage)).div(BigNumber.from(10000)))
-}
-
-export const getSwapAmountOutMin = (amountOut: BigNumber, slip: number) => { //slippage is %        
-    let slippage = Math.round((100 - slip) * 100)
-    if (slippage < 0) slippage = 0
-    return amountOut.mul(BigNumber.from(slippage)).div(BigNumber.from(10000))
+export const getURL_FromIPFS_URI = (uri: string) => {
+    return uri.replace("ipfs://", "https://ipfs.io/ipfs/")
 }

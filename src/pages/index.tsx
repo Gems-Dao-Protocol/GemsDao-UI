@@ -1,9 +1,10 @@
 import Benefits from "@app/products/home/Benefits"
 import Faq from "@app/products/home/Faq"
-import Header from "@app/products/home/Header"
+// import Header from "@app/products/home/Header"
 import Intro from "@app/products/home/Intro"
 import Mint from "@app/products/home/Mint"
 import Stats from "@app/products/home/Stats"
+import Header from "@app/products/membership/Header"
 
 const Home = () => {
     return (

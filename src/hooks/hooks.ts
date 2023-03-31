@@ -134,19 +134,20 @@ export function useTokenBalanceCallback(): {
 }
 
 export function useApproveCallback(): {
-  approveCallback: (recvAddress: string, tokenContractAddress: string) => Promise<string>
+  approveCallback: (recvAddress: string, tokenContractAddress: string) => Promise<{ hash: string, allowance: BigNumber }>
 } {
   const { account, library } = useEthers()
   const approveCallback = async function (recvAddress: string, tokenContractAddress: string) {
 
     const tokenContract: Contract = getContract(tokenContractAddress, ERC20_ABI, library, account ? account : undefined)
-    let decimals = await tokenContract.decimals()
     if (!account || !library) return
     const provider = getProviderOrSigner(library, account) as any
     // const totalSupply = await tokenContract.totalSupply()
     return tokenContract.connect(provider).approve(recvAddress, MaxUint256).then(async (response: TransactionResponse) => {
       return response.wait().then((_: any) => {
-        return response.hash
+        return tokenContract.allowance(account, recvAddress).then((res: BigNumber) => {
+          return { hash: response.hash, allowance: res }
+        })
       })
     })
   }

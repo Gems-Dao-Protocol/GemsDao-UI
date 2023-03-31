@@ -16,11 +16,11 @@ export const HTTP_METHODS: {
     DELETE: "DELETE",
 }
 
-export const Staking_CAs: { [chainId in ChainId]?: any } = {
+export const NFT_CAs: { [chainId in ChainId]?: any } = {
     [ChainId.Mainnet]: '',
-    [ChainId.Goerli]: '',
+    [ChainId.Goerli]: '0x6f3ccE2e1D52276B1372Ff90899D949E5fFEa02E',
     [ChainId.BSC]: '',
-    [ChainId.BSCTestnet]: '0xFbaDf7C26054705FCd4d55a563f5844a2b1749C9',
+    [ChainId.BSCTestnet]: '0x52f0f3cf46A3042876C9023B153Db0105bA31032',
     [ChainId.Cronos]: '',
     [ChainId.Arbitrum]: ''
 }
@@ -42,14 +42,6 @@ export const UniswapFactory_Addresses: { [chainId in ChainId]?: any } = {
     [ChainId.Cronos]: '0xd590cC180601AEcD6eeADD9B7f2B7611519544f4',
     [ChainId.Arbitrum]: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4'
 }
-export const SupportedNetworks: any[] = [
-    { network: 'mainnet', chainId: 1 },
-    { network: 'goerli', chainId: 56 },
-    { network: 'bsc', chainId: 56 },
-    { network: 'bsctestnet', chainId: 97 },
-    { network: 'cronos', chainId: 25 },
-    { network: 'arbitrum', chainId: 43114 }
-]
 
 export const CHAIN_ID_NAME_MAP: { [key: ChainId | number]: string } = {
     [ChainId.Mainnet]: 'Ethereum',

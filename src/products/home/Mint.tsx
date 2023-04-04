@@ -28,6 +28,7 @@ export default function Mint() {
                         type="primary"
                         onClick={handleMint}
                         style={{ width: '100%', padding: '20px', fontSize: '30px', fontWeight: 700 }}
+                        disabled={!(allNFTInfos.length > 0 && currencyTokenInfo)}
                     >
                         Buy now
                     </Button>

@@ -17,16 +17,15 @@ export const HTTP_METHODS: {
 }
 
 export const NFT_CAs: { [chainId in ChainId]?: any } = {
-    [ChainId.Mainnet]: '',
-    [ChainId.Goerli]: '0x6f3ccE2e1D52276B1372Ff90899D949E5fFEa02E',
-    [ChainId.BSC]: '',
-    [ChainId.BSCTestnet]: '0x52f0f3cf46A3042876C9023B153Db0105bA31032',
-    [ChainId.Cronos]: '',
-    [ChainId.Arbitrum]: ''
+    [ChainId.Mainnet]: '',    
+    [ChainId.Goerli]: '0xCf6E17e2073a78CAd6EBb7ADB18Fc6C90c665D5B',
+    [ChainId.Sepolia]: '0xC99CD99F4E6c9C981f109AE90B25fC249C386d40',    
+    [ChainId.BSCTestnet]: '0x52f0f3cf46A3042876C9023B153Db0105bA31032'
 }
 
 export const UniswapRouterV2_Addresses: { [chainId in ChainId]?: any } = {
     [ChainId.Mainnet]: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
+    [ChainId.Sepolia]: '0xB4E53B5a3e71D722DA67F1a9c044E7affc221246',
     [ChainId.Goerli]: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
     [ChainId.BSC]: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
     [ChainId.BSCTestnet]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
@@ -36,6 +35,7 @@ export const UniswapRouterV2_Addresses: { [chainId in ChainId]?: any } = {
 
 export const UniswapFactory_Addresses: { [chainId in ChainId]?: any } = {
     [ChainId.Mainnet]: '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f',
+    [ChainId.Sepolia]: '0x5dE4c69556072508d8635368D16083a2f6234135',
     [ChainId.Goerli]: '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f',
     [ChainId.BSC]: '0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73',
     [ChainId.BSCTestnet]: '0x6725F303b657a9451d8BA641348b6761A6CC7a17',
@@ -45,6 +45,7 @@ export const UniswapFactory_Addresses: { [chainId in ChainId]?: any } = {
 
 export const CHAIN_ID_NAME_MAP: { [key: ChainId | number]: string } = {
     [ChainId.Mainnet]: 'Ethereum',
+    [ChainId.Sepolia]: 'Sepolia Testnet',
     [ChainId.Goerli]: 'Goerli Testnet',
     [ChainId.BSC]: 'BNB Smart Chain',
     [ChainId.BSCTestnet]: 'BNB Smart Chain Testnet',
@@ -64,6 +65,7 @@ export const CHAIN_ID_NAME_MAP: { [key: ChainId | number]: string } = {
 
 export const Rpc_URLS: { [chainId in ChainId]?: string } = {
     [ChainId.Mainnet]: 'https://ethereum.publicnode.com',
+    [ChainId.Sepolia]: 'https://eth-sepolia.public.blastapi.io',
     [ChainId.Goerli]: 'https://eth-goerli.public.blastapi.io',
     [ChainId.BSC]: 'https://bsc.nodereal.io',
     [ChainId.BSCTestnet]: 'https://data-seed-prebsc-1-s3.binance.org:8545',
@@ -83,6 +85,7 @@ export const Rpc_URLS: { [chainId in ChainId]?: string } = {
 
 export const Wrapped_Ethers: { [chainId in ChainId]?: any } = {
     [ChainId.Mainnet]: { address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', name: 'Wrapped Ether', symbol: 'WETH', decimals: 18 },
+    [ChainId.Sepolia]: { address: '0xee44150250AfF3E6aC25539765F056EDb7F85D7B', name: 'Wrapped Ether', symbol: 'WETH', decimals: 18 },
     [ChainId.Goerli]: { address: '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6', name: 'Wrapped Ether', symbol: 'WETH', decimals: 18 },
     [ChainId.BSC]: { address: '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c', name: 'Wrapped BNB', symbol: 'WBNB', decimals: 18 },
     [ChainId.BSCTestnet]: { address: '0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd', name: 'Wrapped BNB', symbol: 'WBNB', decimals: 18 },
@@ -102,6 +105,7 @@ export const Wrapped_Ethers: { [chainId in ChainId]?: any } = {
 
 export const Native_Currencies: { [chainId in ChainId]?: any } = {
     [ChainId.Mainnet]: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    [ChainId.Sepolia]: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     [ChainId.Goerli]: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     [ChainId.BSC]: { name: 'BNB', symbol: 'BNB', decimals: 18 },
     [ChainId.BSCTestnet]: { name: 'BNB', symbol: 'BNB', decimals: 18 },
@@ -121,6 +125,7 @@ export const Native_Currencies: { [chainId in ChainId]?: any } = {
 
 export const BlockExplorer_URLS: { [chainId in ChainId]?: string } = {
     [ChainId.Mainnet]: 'https://etherscan.io',
+    [ChainId.Sepolia]: 'https://sepolia.etherscan.io',
     [ChainId.Goerli]: 'https://goerli.etherscan.io/',
     [ChainId.BSC]: 'https://bscscan.com',
     [ChainId.BSCTestnet]: 'https://testnet.bscscan.com',
@@ -140,6 +145,7 @@ export const BlockExplorer_URLS: { [chainId in ChainId]?: string } = {
 
 export const RpcProviders: { [chainId in ChainId]?: JsonRpcProvider } = {
     [ChainId.Mainnet]: new ethers.providers.JsonRpcProvider(Rpc_URLS[ChainId.Mainnet]),
+    [ChainId.Sepolia]: new ethers.providers.JsonRpcProvider(Rpc_URLS[ChainId.Sepolia]),
     [ChainId.Goerli]: new ethers.providers.JsonRpcProvider(Rpc_URLS[ChainId.Goerli]),
     [ChainId.BSC]: new ethers.providers.JsonRpcProvider(Rpc_URLS[ChainId.BSC]),
     [ChainId.BSCTestnet]: new ethers.providers.JsonRpcProvider(Rpc_URLS[ChainId.BSCTestnet]),

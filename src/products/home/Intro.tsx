@@ -1,6 +1,7 @@
 import { Button } from "@app/common/components/Buttons"
+import MintButton from "./components/MintButton"
 
-export default function Intro() {
+export default function Intro({ handleMint }: { handleMint: () => void }) {
     return (
         <div className="w-full flex flex-col-reverse justify-center lg:justify-start lg:flex-row lg:items-center gap-4 py-12">
             <div className="w-full sm:basis-5/12 flex flex-col gap-6 sm:gap-10">
@@ -16,13 +17,7 @@ export default function Intro() {
                 </div>
                 <div className="w-full flex justify-center sm:justify-start">
                     <div className="mt-6 w-[200px] sm:w-[320px]">
-                        <Button
-                            type="primary"
-                            href={""}
-                            style={{ width: '100%', padding: '20px', fontSize: '30px', fontWeight: 700 }}
-                        >
-                            Buy now
-                        </Button>
+                        <MintButton onClick={handleMint} />
                     </div>
                 </div>
             </div>

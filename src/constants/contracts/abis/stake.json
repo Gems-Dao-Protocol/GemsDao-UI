@@ -1,74 +1,153 @@
 [
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_poolToken",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_dailyReturnRate",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_depositFee",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_withdrawFee",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "_feeReceiver",
-				"type": "address"
-			}
-		],
-		"name": "createNewPool",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_poolToken",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_dailyReturnRate",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_depositFee",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_withdrawFee",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "_feeReceiver",
-				"type": "address"
-			}
-		],
-		"name": "modifyPool",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "ExceedsMaxWallet",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "ExceedssupplyCap",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InvalidAddress",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InvalidNFTid",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "LengthMismatch",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "NoBalanceToWithdraw",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "PaymentToMintFailed",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "WithdrawETHFailed",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "WrongLimitValue",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "approved",
+				"type": "bool"
+			}
+		],
+		"name": "ApprovalForAll",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "Mint",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256[]",
+				"name": "ids",
+				"type": "uint256[]"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256[]",
+				"name": "amounts",
+				"type": "uint256[]"
+			}
+		],
+		"name": "MintBatch",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256[]",
+				"name": "ids",
+				"type": "uint256[]"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256[]",
+				"name": "amounts",
+				"type": "uint256[]"
+			}
+		],
+		"name": "OwnerMintBatch",
+		"type": "event"
 	},
 	{
 		"anonymous": false,
@@ -90,113 +169,315 @@
 		"type": "event"
 	},
 	{
+		"anonymous": false,
 		"inputs": [
 			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "maxWallet",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "supplyCap",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "price",
+				"type": "uint256"
+			}
+		],
+		"name": "SetNFT",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
 				"internalType": "address",
-				"name": "_tokenAddress",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256[]",
+				"name": "ids",
+				"type": "uint256[]"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256[]",
+				"name": "values",
+				"type": "uint256[]"
+			}
+		],
+		"name": "TransferBatch",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "TransferSingle",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "value",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "URI",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [],
+		"name": "Withdraw",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "WETH",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
 				"type": "address"
 			}
 		],
-		"name": "ownerWithdrawToken",
-		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address[]",
+				"name": "accounts",
+				"type": "address[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "ids",
+				"type": "uint256[]"
+			}
+		],
+		"name": "balanceOfBatch",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
-		"name": "renounceOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
+		"name": "currencyToken",
+		"outputs": [
 			{
-				"internalType": "address",
-				"name": "_poolToken",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_dailyReturnRate",
-				"type": "uint256"
-			}
-		],
-		"name": "setDailyReturnRate",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_poolToken",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_depositFee",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_withdrawFee",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "_feeReceiver",
+				"internalType": "contract IERC20",
+				"name": "",
 				"type": "address"
 			}
 		],
-		"name": "setFeeInfo",
-		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAllNFTInfo",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxWallet",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "supplyCap",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalMinted",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct GemsDao.NFTInfo[]",
+				"name": "",
+				"type": "tuple[]"
+			},
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getNumberOfSuppliedNFTs",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "_poolToken",
+				"name": "account",
 				"type": "address"
 			},
 			{
 				"internalType": "address",
-				"name": "_feeReceiver",
+				"name": "operator",
 				"type": "address"
 			}
 		],
-		"name": "setFeeReceiver",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_poolToken",
-				"type": "address"
-			},
+		"name": "isApprovedForAll",
+		"outputs": [
 			{
 				"internalType": "bool",
-				"name": "_poolPaused",
+				"name": "",
 				"type": "bool"
 			}
 		],
-		"name": "setPausePool",
-		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "_poolToken",
-				"type": "address"
+				"internalType": "uint256[]",
+				"name": "_ids",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "_amounts",
+				"type": "uint256[]"
+			}
+		],
+		"name": "mintBatch",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
@@ -204,130 +485,12 @@
 				"type": "uint256"
 			}
 		],
-		"name": "stake",
+		"name": "mintSingle",
 		"outputs": [],
 		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "token",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "user",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "Stake",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_poolToken",
-				"type": "address"
-			}
-		],
-		"name": "withdrawFull",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "token",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "user",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "WithdrawFull",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_poolToken",
-				"type": "address"
-			}
-		],
-		"name": "withdrawProfit",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "token",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "user",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "pending",
-				"type": "uint256"
-			}
-		],
-		"name": "WithdrawProfit",
-		"type": "event"
-	},
-	{
-		"stateMutability": "payable",
-		"type": "receive"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -335,294 +498,32 @@
 				"type": "uint256"
 			}
 		],
-		"name": "allPoolInfos",
+		"name": "nftInfo",
 		"outputs": [
 			{
 				"internalType": "uint256",
-				"name": "pid",
-				"type": "uint256"
-			},
-			{
-				"components": [
-					{
-						"internalType": "address",
-						"name": "tokenAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "string",
-						"name": "name",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "symbol",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "decimals",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct CAKEMOON_StakingPool.TokenInfo",
-				"name": "poolTokenInfo",
-				"type": "tuple"
-			},
-			{
-				"internalType": "uint256",
-				"name": "dailyReturnRate",
-				"type": "uint256"
-			},
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "depositFee",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "withdrawFee",
-						"type": "uint256"
-					},
-					{
-						"internalType": "address",
-						"name": "feeReceiver",
-						"type": "address"
-					}
-				],
-				"internalType": "struct CAKEMOON_StakingPool.FeeInfo",
-				"name": "feeInfo",
-				"type": "tuple"
-			},
-			{
-				"internalType": "uint256",
-				"name": "totalStaked",
+				"name": "id",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "totalClaimedProfit",
+				"name": "maxWallet",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "totalFeeCollected",
+				"name": "supplyCap",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "depositFeeCollected",
+				"name": "price",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "withdrawFeeCollected",
+				"name": "totalMinted",
 				"type": "uint256"
-			},
-			{
-				"internalType": "bool",
-				"name": "isPaused",
-				"type": "bool"
-			},
-			{
-				"internalType": "uint256",
-				"name": "pausedTime",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "resumedTime",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getAllPoolInfos",
-		"outputs": [
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "pid",
-						"type": "uint256"
-					},
-					{
-						"components": [
-							{
-								"internalType": "address",
-								"name": "tokenAddress",
-								"type": "address"
-							},
-							{
-								"internalType": "string",
-								"name": "name",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "symbol",
-								"type": "string"
-							},
-							{
-								"internalType": "uint256",
-								"name": "decimals",
-								"type": "uint256"
-							}
-						],
-						"internalType": "struct CAKEMOON_StakingPool.TokenInfo",
-						"name": "poolTokenInfo",
-						"type": "tuple"
-					},
-					{
-						"internalType": "uint256",
-						"name": "dailyReturnRate",
-						"type": "uint256"
-					},
-					{
-						"components": [
-							{
-								"internalType": "uint256",
-								"name": "depositFee",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "withdrawFee",
-								"type": "uint256"
-							},
-							{
-								"internalType": "address",
-								"name": "feeReceiver",
-								"type": "address"
-							}
-						],
-						"internalType": "struct CAKEMOON_StakingPool.FeeInfo",
-						"name": "feeInfo",
-						"type": "tuple"
-					},
-					{
-						"internalType": "uint256",
-						"name": "totalStaked",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "totalClaimedProfit",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "totalFeeCollected",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "depositFeeCollected",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "withdrawFeeCollected",
-						"type": "uint256"
-					},
-					{
-						"internalType": "bool",
-						"name": "isPaused",
-						"type": "bool"
-					},
-					{
-						"internalType": "uint256",
-						"name": "pausedTime",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "resumedTime",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct CAKEMOON_StakingPool.PoolInfo[]",
-				"name": "",
-				"type": "tuple[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getPoolCount",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_poolToken",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_user",
-				"type": "address"
-			}
-		],
-		"name": "getUserStatus",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "lastClaimedTime",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "stakedTime",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "totalClaimedProfit",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "depositFeeAmount",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct CAKEMOON_StakingPool.UserInfo",
-				"name": "",
-				"type": "tuple"
 			}
 		],
 		"stateMutability": "view",
@@ -645,213 +546,289 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "_poolToken",
+				"name": "to",
 				"type": "address"
 			},
 			{
-				"internalType": "address",
-				"name": "_user",
-				"type": "address"
-			}
-		],
-		"name": "pendingProfit",
-		"outputs": [
+				"internalType": "uint256[]",
+				"name": "_ids",
+				"type": "uint256[]"
+			},
 			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
+				"internalType": "uint256[]",
+				"name": "_amounts",
+				"type": "uint256[]"
 			}
 		],
-		"stateMutability": "view",
+		"name": "ownerMintBatch",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "",
+				"name": "from",
 				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "ids",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "amounts",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "bytes",
+				"name": "data",
+				"type": "bytes"
 			}
 		],
-		"name": "poolInfo",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "pid",
-				"type": "uint256"
-			},
-			{
-				"components": [
-					{
-						"internalType": "address",
-						"name": "tokenAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "string",
-						"name": "name",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "symbol",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "decimals",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct CAKEMOON_StakingPool.TokenInfo",
-				"name": "poolTokenInfo",
-				"type": "tuple"
-			},
-			{
-				"internalType": "uint256",
-				"name": "dailyReturnRate",
-				"type": "uint256"
-			},
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "depositFee",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "withdrawFee",
-						"type": "uint256"
-					},
-					{
-						"internalType": "address",
-						"name": "feeReceiver",
-						"type": "address"
-					}
-				],
-				"internalType": "struct CAKEMOON_StakingPool.FeeInfo",
-				"name": "feeInfo",
-				"type": "tuple"
-			},
-			{
-				"internalType": "uint256",
-				"name": "totalStaked",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "totalClaimedProfit",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "totalFeeCollected",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "depositFeeCollected",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "withdrawFeeCollected",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bool",
-				"name": "isPaused",
-				"type": "bool"
-			},
-			{
-				"internalType": "uint256",
-				"name": "pausedTime",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "resumedTime",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
+		"name": "safeBatchTransferFrom",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "_poolToken",
-				"type": "address"
-			}
-		],
-		"name": "profitRemainingInPool",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
+				"name": "from",
 				"type": "address"
 			},
 			{
 				"internalType": "address",
-				"name": "",
+				"name": "to",
 				"type": "address"
-			}
-		],
-		"name": "userInfo",
-		"outputs": [
+			},
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
 			{
 				"internalType": "uint256",
 				"name": "amount",
 				"type": "uint256"
 			},
 			{
+				"internalType": "bytes",
+				"name": "data",
+				"type": "bytes"
+			}
+		],
+		"name": "safeTransferFrom",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "approved",
+				"type": "bool"
+			}
+		],
+		"name": "setApprovalForAll",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_uri",
+				"type": "string"
+			}
+		],
+		"name": "setBaseURI",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "contract IERC20",
+				"name": "_currencyToken",
+				"type": "address"
+			}
+		],
+		"name": "setCurrencyTokenForNFTPrice",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "uint256",
-				"name": "lastClaimedTime",
+				"name": "_id",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "stakedTime",
+				"name": "_maxWallet",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "totalClaimedProfit",
+				"name": "_supplyCap",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "depositFeeAmount",
+				"name": "_price",
 				"type": "uint256"
+			}
+		],
+		"name": "setNFTInfo",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxWallet",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "supplyCap",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalMinted",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct GemsDao.NFTInfo[]",
+				"name": "_nfts",
+				"type": "tuple[]"
+			}
+		],
+		"name": "setNFTInfoBatch",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_weth",
+				"type": "address"
+			}
+		],
+		"name": "setWETH",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes4",
+				"name": "interfaceId",
+				"type": "bytes4"
+			}
+		],
+		"name": "supportsInterface",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "WETH",
-		"outputs": [
+		"inputs": [
 			{
 				"internalType": "address",
-				"name": "",
+				"name": "newOwner",
 				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "uri",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
 			}
 		],
 		"stateMutability": "view",
 		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_tokenAddress",
+				"type": "address"
+			}
+		],
+		"name": "withdrawToken",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
 	}
 ]

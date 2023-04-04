@@ -38,6 +38,7 @@ export interface IGemsDaoContext {
     allNFTInfos: INFTINfo[]
     currencyTokenInfo: ITokenInfo
     mintedInfos: IUserMinted[]
+    isLoadingAllNFTs: boolean
     mintSingle: (id: BigNumber, amount: BigNumber, value: BigNumber) => Promise<any>
     mintBatch: (ids: BigNumber[], amounts: BigNumber[], value: BigNumber) => Promise<any>
     updateAllNFTInfo: () => Promise<any>
@@ -135,7 +136,7 @@ export const GemsDaoProvider = ({ children = null as any }) => {
         }
     }, [queueAllNFTInfo])
 
-    const updateAllNFTInfo = async () => {
+    const updateAllNFTInfo = async () => {        
         setIsLoadingAllNFTs(true)
         const chainId = currentChainId;
         const nftContract: Contract = getContract(NFT_CAs[currentChainId], NFT_ABI, RpcProviders[chainId], account ? account : undefined)
@@ -144,7 +145,7 @@ export const GemsDaoProvider = ({ children = null as any }) => {
         if (!tokenInfo) return
         if (isWrappedEther(chainId, tokenInfo.address)) tokenInfo = { ...tokenInfo, symbol: Native_Currencies[chainId].symbol, name: Native_Currencies[chainId].name }
         setCurrencyTokenInfo(tokenInfo)
-
+        
         await fetchAllNFTInfo(nftContract).then(async result => {
             const nfts = result[0]
             const URIs = result[1]
@@ -234,6 +235,7 @@ export const GemsDaoProvider = ({ children = null as any }) => {
                 allNFTInfos,
                 currencyTokenInfo,
                 mintedInfos,
+                isLoadingAllNFTs,
                 mintSingle,
                 mintBatch,
                 updateAllNFTInfo,

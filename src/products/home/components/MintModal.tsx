@@ -10,7 +10,6 @@ import React, { useMemo, useState, useEffect, useRef } from 'react'
 import { toast } from 'react-toastify'
 import Modal from 'src/common/components/Modal'
 import NFTAmountInput from './NFTAmountInput'
-import NFTSelectBox from './NFTSelectBox'
 import ERC20_ABI from '@app/constants/contracts/abis/erc20.json'
 import { MaxUint256 } from '@ethersproject/constants'
 
@@ -23,22 +22,19 @@ const ID_NFT_INPUTAMOUNT = "id_nft_inputamount"
 
 export default function MintModal({ isOpen, handleClose }: ModalProps) {
     const { account } = useEthers()
-    const { allNFTInfos, currencyTokenInfo, mintedInfos, currentChainId, mintSingle, updateNFTInfo, updateMintedInfo } = useGemsDao()
-    const [selectedNFTId, setSelectedNFTId] = useState(1)
+    const { nftInfo, currencyTokenInfo, userInfo, currentChainId, mintSingle, updateUserInfo, updateMintedInfo } = useGemsDao()
     const [amount, setInputAmount] = useState(0)
     const { approveCallback } = useApproveCallback()
     const [isWalletApproving, setIsWalletApproving] = useState(false)
     const [allowance, setAllowance] = useState(BigNumber.from(0))
     const [payAmount, setPayAmount] = useState(BigNumber.from(0))
     const [isMinting, setIsMinting] = useState(false)
-    const [selectedNFT, setSelectedNFT] = useState<INFTINfo>()
-    const [yourBalance, setYourBalance] = useState(0)
 
     useEffect(() => {
         setInputAmount(0)
         setInputBoxValue(0)
-        setSelectedNFTId(1)
-    },[isOpen])
+    }, [isOpen])
+
     const onInputChange = (val: string) => {
         setInputAmount(Number(val))
     }
@@ -55,13 +51,13 @@ export default function MintModal({ isOpen, handleClose }: ModalProps) {
     }
 
     const handleMax = () => {
-        const index = mintedInfos.findIndex(each => each.id === selectedNFTId)
-        const indexOfNFTInfo = allNFTInfos.findIndex(each => each.id === selectedNFTId)
-        if (index >= 0) {
-            let val = allNFTInfos[indexOfNFTInfo].maxWallet - mintedInfos[index].mintedAmount
-            val = Math.min(val, allNFTInfos[indexOfNFTInfo].maxSupply - allNFTInfos[indexOfNFTInfo].totalMinted)
+        if (account && userInfo && nftInfo) {
+            let val = nftInfo.maxWallet - userInfo.balanceOf
+            val = Math.min(val, nftInfo.maxSupply - nftInfo.totalSupply)
             setInputAmount(val)
             setInputBoxValue(val)
+        } else {
+            initInputBox()
         }
     }
 
@@ -91,10 +87,10 @@ export default function MintModal({ isOpen, handleClose }: ModalProps) {
     const onMint = async () => {
         setIsMinting(true)
         try {
-            await mintSingle(BigNumber.from(selectedNFTId), BigNumber.from(amount), payAmount).then((res: any) => {
+            await mintSingle(BigNumber.from(amount), payAmount).then((res: any) => {
                 if (res.status === 1) {
-                    updateNFTInfo(selectedNFTId)
-                    updateMintedInfo(selectedNFTId)
+                    updateUserInfo()
+                    updateMintedInfo()
                     updateAllowance()
                     toast.success('Successfully staked!')
                 } else {
@@ -109,7 +105,6 @@ export default function MintModal({ isOpen, handleClose }: ModalProps) {
             console.log(error)
         }
         initInputBox()
-        setInputAmount(0)
         setIsMinting(false)
         return null
     }
@@ -137,23 +132,12 @@ export default function MintModal({ isOpen, handleClose }: ModalProps) {
     }, [currencyTokenInfo])
 
     useEffect(() => {
-        const indexOfNFTInfo = allNFTInfos.findIndex(each => each.id === selectedNFTId)
-        if (indexOfNFTInfo >= 0) {
-            setPayAmount(allNFTInfos[indexOfNFTInfo].price.mul(BigNumber.from(amount)))
-            setSelectedNFT(allNFTInfos[indexOfNFTInfo])
+        if (nftInfo) {
+            setPayAmount(nftInfo.price.mul(BigNumber.from(amount)))
             return
         }
         setPayAmount(BigNumber.from(0))
-    }, [selectedNFTId, allNFTInfos, amount])
-
-    useEffect(() => {
-        const index = mintedInfos.findIndex(each => each.id === selectedNFTId)
-        if (index >= 0) {
-            setYourBalance(mintedInfos[index].mintedAmount)
-            return
-        }
-        setYourBalance(0)
-    }, [selectedNFTId, mintedInfos])
+    }, [nftInfo, amount])
 
     return (
         <div className='w-full'>
@@ -180,25 +164,24 @@ export default function MintModal({ isOpen, handleClose }: ModalProps) {
                     </div>
                 </div>
                 <div className='w-full p-4 flex flex-col gap-4 items-center'>
-                    <NFTSelectBox nfts={allNFTInfos} readOnly={false} selectedNFTId={selectedNFTId} currencyTokenInfo={currencyTokenInfo} onChange={(id: number) => setSelectedNFTId(id)} />
                     <NFTAmountInput id={ID_NFT_INPUTAMOUNT} onChange={onInputChange} onMax={handleMax} />
-                    {selectedNFT && <>
+                    {nftInfo && <>
                         <div className='w-full flex justify-between items-center text-[16px]'>
-                            <div>MaxWallet:</div>
-                            <div>{selectedNFT.maxWallet}</div>
+                            <div>Max Wallet:</div>
+                            <div>{nftInfo.maxWallet}</div>
                         </div>
                         <div className='w-full flex justify-between items-center text-[16px]'>
-                            <div>SupplyCap:</div>
-                            <div>{selectedNFT.maxSupply}</div>
+                            <div>Supply Cap:</div>
+                            <div>{nftInfo.maxSupply}</div>
                         </div>
                         <div className='w-full flex justify-between items-center text-[16px]'>
-                            <div>TotalMinted:</div>
-                            <div>{selectedNFT.totalMinted}</div>
+                            <div>Total Minted:</div>
+                            <div>{nftInfo.totalSupply}</div>
                         </div>
                     </>}
-                    {mintedInfos.length > 0 && <div className='w-full flex justify-between items-center text-[16px]'>
-                        <div>YourMinted:</div>
-                        <div>{yourBalance}</div>
+                    {userInfo && <div className='w-full flex justify-between items-center text-[16px]'>
+                        <div>Your Balance:</div>
+                        <div>{userInfo.balanceOf}</div>
                     </div>}
                     {!allowance.gte(payAmount) && amount > 0 ?
                         <LoadingButton

@@ -49,7 +49,7 @@ export interface IGemsDaoContext {
 const GemsDaoContext = React.createContext<Maybe<IGemsDaoContext>>(null)
 
 export const GemsDaoProvider = ({ children = null as any }) => {
-    const [currentChainId, setCurrentChainId] = useState(CHAIN_ITEMS[2])
+    const [currentChainId, setCurrentChainId] = useState(CHAIN_ITEMS[1])
     const [nftInfo, setNFTInfo] = useMemoizedState<INFTINfo>(undefined)
     const { account, library } = useEthers()
     const [currencyTokenInfo, setCurrencyTokenInfo] = useMemoizedState<ITokenInfo>(undefined)

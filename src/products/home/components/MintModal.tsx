@@ -92,7 +92,8 @@ export default function MintModal({ isOpen, handleClose }: ModalProps) {
                     updateUserInfo()
                     updateMintedInfo()
                     updateAllowance()
-                    toast.success('Successfully staked!')
+                    handleClose()
+                    toast.success('Successfully minted!')
                 } else {
                     toast.error(`Transaction reverted! Tx:${res.hash}`)
                 }

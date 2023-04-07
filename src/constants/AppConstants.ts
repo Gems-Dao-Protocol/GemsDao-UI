@@ -17,9 +17,9 @@ export const HTTP_METHODS: {
 }
 
 export const NFT_CAs: { [chainId in ChainId]?: any } = {
-    [ChainId.Mainnet]: '',    
+    [ChainId.Mainnet]: '',
     [ChainId.Goerli]: '0x6243F33eCD4296CADD85bF5Efa89735Fd8C6CE91',
-    [ChainId.Sepolia]: '',    
+    [ChainId.Sepolia]: '',
     [ChainId.BSCTestnet]: '0x8250dA68797dc66e71985656185479cebbd3362F'
 }
 
@@ -58,8 +58,6 @@ export const CHAIN_ID_NAME_MAP: { [key: ChainId | number]: string } = {
     [ChainId.Andromeda]: 'Metis Andromeda',
     [ChainId.Optimism]: 'Optimism',
     [ChainId.Arbitrum]: 'Arbitrum',
-    [ChainId.Aurora]: 'Aurora',
-    [ChainId.Velas]: 'Velas EVM',
     [ChainId.Fantom]: 'Fantom Opera'
 }
 
@@ -78,8 +76,6 @@ export const Rpc_URLS: { [chainId in ChainId]?: string } = {
     [ChainId.Andromeda]: 'https://andromeda.metis.io/?owner=1088',
     [ChainId.Optimism]: 'https://mainnet.optimism.io',
     [ChainId.Arbitrum]: 'https://arb1.arbitrum.io/rpc',
-    [ChainId.Aurora]: 'https://mainnet.aurora.dev',
-    [ChainId.Velas]: 'https://evmexplorer.velas.com/rpc',
     [ChainId.Fantom]: 'https://rpc.ftm.tools'
 }
 
@@ -98,8 +94,6 @@ export const Wrapped_Ethers: { [chainId in ChainId]?: any } = {
     [ChainId.Andromeda]: { address: '0x75cb093E4D61d2A2e65D8e0BBb01DE8d89b53481', name: 'Wrapped METIS', symbol: 'WMETIS', decimals: 18 },
     [ChainId.Optimism]: { address: '0x4200000000000000000000000000000000000006', name: 'Wrapped Ether', symbol: 'WETH', decimals: 18 },
     [ChainId.Arbitrum]: { address: '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', name: 'Wrapped Ether', symbol: 'WETH', decimals: 18 },
-    [ChainId.Aurora]: { address: '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', name: 'Wrapped Ether', symbol: 'WETH', decimals: 18 },
-    [ChainId.Velas]: { address: '0xc579D1f3CF86749E05CD06f7ADe17856c2CE3126', name: 'Wrapped VLX', symbol: 'WVLX', decimals: 18 },
     [ChainId.Fantom]: { address: '0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83', name: 'Wrapped Fantom', symbol: 'WFTM', decimals: 18 }
 }
 
@@ -118,8 +112,6 @@ export const Native_Currencies: { [chainId in ChainId]?: any } = {
     [ChainId.Andromeda]: { name: 'METIS', symbol: 'METIS', decimals: 18 },
     [ChainId.Optimism]: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     [ChainId.Arbitrum]: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-    [ChainId.Aurora]: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-    [ChainId.Velas]: { name: 'VLX', symbol: 'VLX', decimals: 18 },
     [ChainId.Fantom]: { name: 'Fantom', symbol: 'FTM', decimals: 18 }
 }
 
@@ -138,8 +130,6 @@ export const BlockExplorer_URLS: { [chainId in ChainId]?: string } = {
     [ChainId.Andromeda]: 'https://andromeda-explorer.metis.io',
     [ChainId.Optimism]: 'https://optimistic.etherscan.io',
     [ChainId.Arbitrum]: 'https://arbiscan.io',
-    [ChainId.Aurora]: 'https://aurorascan.dev',
-    [ChainId.Velas]: 'https://evmexplorer.velas.com',
     [ChainId.Fantom]: 'https://ftmscan.com'
 }
 
@@ -158,7 +148,5 @@ export const RpcProviders: { [chainId in ChainId]?: JsonRpcProvider } = {
     [ChainId.Andromeda]: new ethers.providers.JsonRpcProvider(Rpc_URLS[ChainId.Andromeda]),
     [ChainId.Optimism]: new ethers.providers.JsonRpcProvider(Rpc_URLS[ChainId.Optimism]),
     [ChainId.Arbitrum]: new ethers.providers.JsonRpcProvider(Rpc_URLS[ChainId.Arbitrum]),
-    [ChainId.Aurora]: new ethers.providers.JsonRpcProvider(Rpc_URLS[ChainId.Aurora]),
-    [ChainId.Velas]: new ethers.providers.JsonRpcProvider(Rpc_URLS[ChainId.Velas]),
     [ChainId.Fantom]: new ethers.providers.JsonRpcProvider(Rpc_URLS[ChainId.Fantom]),
 }

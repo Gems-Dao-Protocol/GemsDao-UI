@@ -4,32 +4,32 @@ export const faqInfos = [
     {
         heading: "Is buying this pass worth it?",
         content:
-            "Non odit magnam dolorum. Et odio et maxime consequuntur provident. Error eaque est dolor et qui. Ex odit doloremque consequatur quis. Eaque et pariatur dolores. Magni in quasi dolor repudiandae explicabo.",
+            "GEMSDAO membership holders will encase a community of likeminded individuals looking to learn and participate in the world of decentralized earth protocols. If that sounds like you welcome aboard.",
     },
     {
         heading: "Is there a Discord?",
         content:
-            "Quos quam ipsam consequatur consequatur et distinctio. Facere vel ut dolorem. Quam quo neque quos voluptates cupiditate sit quae.",
+            "Yes GEMSDAOXYZ is the discord.(will update final discord)",
     },
     {
         heading: "What are the funds being used for?",
         content:
-            "Vel et quam reprehenderit velit. Possimus accusamus eos esse vero quo modi voluptas hic. Quia illo quisquam vel quis qui. Autem labore aut incidunt. Eius non voluptatem et laboriosam in.",
+            "Funds will be used to manage and advance the GEMSDAO protocal and technologies. Mint price per membership is 0.267.",
     },
     {
         heading: "Will this pass get me on all the allow lists?",
         content:
-            "Non odit magnam dolorum. Et odio et maxime consequuntur provident. Error eaque est dolor et qui. Ex odit doloremque consequatur quis. Eaque et pariatur dolores. Magni in quasi dolor repudiandae explicabo.",
+            "Yes this membership gives access to all future technologies including the GEMSDAO marketplace and DAO’s.",
     },
     {
         heading: "How long is this pass valid?",
         content:
-            "Quos quam ipsam consequatur consequatur et distinctio. Facere vel ut dolorem. Quam quo neque quos voluptates cupiditate sit quae.",
+            "This pass is valid for a lifetime and beyond.",
     },
     {
         heading: "What are the maximum mints per wallet?",
         content:
-            "Vel et quam reprehenderit velit. Possimus accusamus eos esse vero quo modi voluptas hic. Quia illo quisquam vel quis qui. Autem labore aut incidunt. Eius non voluptatem et laboriosam in.",
+            "Maximum mints per wallet will be limited to 10 per wallet.",
     }
 ];
 

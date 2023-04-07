@@ -6,7 +6,7 @@ export default function Benefits() {
                     <span className="font-bold">Get exclusive</span>{` access to our holder benefits`}
                 </div>
                 <div className="text-white text-[16px] xl:text-[20px] leading-[2] mt-4">
-                    As a PREMINT Collector Pass holder, you will get access to an evolving collector dashboard and features to keep you on top of the hottest mints.
+                    As a GEMSDAO membership holder , you will get access to a complete world of decentralized rare earth gems , metals and useful protocols.
                 </div>
             </div>
             <div className="w-full xl:w-11/12 flex flex-col gap-16">
@@ -18,10 +18,10 @@ export default function Benefits() {
                             </div>
                             <div className="px-6 xl:px-8 flex flex-col gap-2 xl:gap-6">
                                 <div className="text-white text-[26px] xl:text-[30px] font-bold uppercase">
-                                    Hottest projects
+                                    Future Projects
                                 </div>
                                 <div className="text-white text-[16px] xl:text-[20px] leading-[2]">
-                                    Learn about all of the ongoing public projects on GemsDao as well as the alpha lists that are expanding the quickest.
+                                    Get early Access to all of the Future  projects in the GemsDao ecosystem.
                                 </div>
                             </div>
                         </div>
@@ -33,10 +33,10 @@ export default function Benefits() {
                             </div>
                             <div className="px-6 xl:px-8 flex flex-col gap-2 xl:gap-6">
                                 <div className="text-white text-[26px] xl:text-[30px] font-bold uppercase">
-                                    Newsletter
+                                    DAO
                                 </div>
                                 <div className="text-white text-[16px] xl:text-[20px] leading-[2]">
-                                    Subscribe to a token-gated newsletter to stay informed about upcoming mint dates and trending projects.
+                                    This Organization exists for <b>GEMS DAO</b> participants to allocate and delegate  resources for the long-term growth and prosperity of the GEMS project.
                                 </div>
                             </div>
                         </div>
@@ -53,7 +53,7 @@ export default function Benefits() {
                                     Beta Access
                                 </div>
                                 <div className="text-white text-[16px] xl:text-[20px] leading-[2]">
-                                    Get early access to upcoming GemsDao public collector features before anyone else has access to them.
+                                    Membership holders will receive beta access to the Gemsdao decentralized protocols and technologies released within the ecosystem.
                                 </div>
                             </div>
                         </div>
@@ -65,10 +65,10 @@ export default function Benefits() {
                             </div>
                             <div className="px-6 xl:px-8 flex flex-col gap-2 xl:gap-6">
                                 <div className="text-white text-[26px] xl:text-[30px] font-bold uppercase">
-                                    Private calendar
+                                    GEMS DAO VAULT
                                 </div>
                                 <div className="text-white text-[16px] xl:text-[20px] leading-[2]">
-                                    Access your personalized calendar feed showing registration times and mint dates for all projects on the platform.
+                                    Geology reports and asset verification for each class presented by the Gems Dao Protocol.
                                 </div>
                             </div>
                         </div>

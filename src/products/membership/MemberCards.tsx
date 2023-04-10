@@ -66,11 +66,23 @@ const memberCards: IMemberCardInfo[] = [
             "GemsDao API portal"
         ]
     },
-    ,
     {
         title: "Purple Diamond",
         desc: "6th Most Rare",
         uri: "/images/Purple_Diamond.png",
+        rares: [
+            "25x weekly + 5x monthly",
+            "GemsDao alpha club",
+            "GemsDao rewards",
+            "GemsDao network",
+            "GemsDao meta pass",
+            "GemsDao API portal"
+        ]
+    },
+    {
+        title: "Normal Diamond",
+        desc: "Base level membership",
+        uri: "/images/Normal_Diamond.png",
         rares: [
             "25x weekly + 5x monthly",
             "GemsDao alpha club",

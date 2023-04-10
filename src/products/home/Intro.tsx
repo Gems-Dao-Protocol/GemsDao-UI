@@ -16,7 +16,7 @@ export default function Intro({ handleMint }: { handleMint: () => void }) {
                     Gems Dao - decentralization of rare earth gems and minerals . This pass accesses all future projects and opportunities created by the DAO .
                 </div>
                 <div className="w-full flex justify-center sm:justify-start">
-                    <div className="mt-6 w-[200px] sm:w-[320px]">
+                    <div className="w-[200px] sm:w-[320px]">
                         <MintButton onClick={handleMint} />
                     </div>
                 </div>

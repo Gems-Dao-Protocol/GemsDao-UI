@@ -1,10 +1,3 @@
-export const menu_items = [
-    { label: "Benefits", link: "" },
-    { label: "Schedule", link: "" },
-    { label: "Help", link: "" },
-    { label: "Privacy Police", link: "" },
-    { label: "Contacts", link: "" }
-]
 
 const socials = [
     { src: "/images/socials/discord.png", link: "" },
@@ -20,7 +13,7 @@ export default function Footer() {
             <div className='w-full mx-6 sm:mx-10 lg:w-10/12 lg:mx-0'>
                 <div className="w-full flex flex-col-reverse xl:flex-row xl:justify-between items-center gap-6" style={{ fontFamily: 'Play' }}>
                     <div className="flex flex-col items-center xl:items-start gap-8 xl:gap-2">
-                        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-white text-[20px] sm:text-[24px]">
+                        {/* <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-white text-[20px] sm:text-[24px]">
                             {
                                 menu_items.map((each, index) => {
                                     return (
@@ -30,7 +23,7 @@ export default function Footer() {
                                     )
                                 })
                             }
-                        </div>
+                        </div> */}
                         <div className="text-center text-[20px] sm:text-[24px] text-[#00CEFF]">
                             <span className='font-bold'>Copyright 2023 GemsDao</span>{` | By NFT people, for NFT people`}
                         </div>

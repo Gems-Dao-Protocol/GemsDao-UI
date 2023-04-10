@@ -11,7 +11,7 @@ const Home404Page = (props) => {
 
     return (
         <div
-            className='flex flex-col w-full justify-center items-center py-20 gap-4'
+            className='flex flex-col w-full justify-center items-center py-20 gap-4 min-h-screen'
         >
             <>
                 <h1 className='text-white'>404</h1>

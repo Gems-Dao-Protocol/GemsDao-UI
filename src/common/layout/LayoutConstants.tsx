@@ -3,21 +3,21 @@ import { ChainId } from "@usedapp/core"
 export enum SidebarItem {
   HOME,
   Benefits,
-  Schedule,
+  Marketplace,
   DAO
 }
 
 export const SIDEBAR_ROUTES: { [key: string]: { type: string, link: string } } = {
   [SidebarItem.HOME]: { type: "internal", link: "/" },
   [SidebarItem.Benefits]: { type: "internal", link: "/benefits" },
-  [SidebarItem.Schedule]: { type: "internal", link: "/schedule" },
+  [SidebarItem.Marketplace]: { type: "internal", link: "/Marketplace" },
   [SidebarItem.DAO]: { type: "internal", link: "/dao" }
 }
 
 export const SIDEBAR_ITEMS: { [key: string]: string } = {
   [SidebarItem.HOME]: "Home",
   [SidebarItem.Benefits]: "Benefits",
-  [SidebarItem.Schedule]: "Schedule",
+  [SidebarItem.Marketplace]: "Marketplace",
   [SidebarItem.DAO]: "DAO"
 }
 

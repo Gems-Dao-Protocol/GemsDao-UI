@@ -6,12 +6,12 @@ const memberCards: IMemberCardInfo[] = [
         desc: "Most Rare",
         uri: "/images/Pink_Diamond.png",
         rares: [
-            "25x weekly + 5x monthly",
+            "2,000 NFTs (2,000 x 10) = 20,000 votes",
             "GemsDao alpha club",
             "GemsDao rewards",
             "GemsDao network",
-            "GemsDao meta pass",
-            "GemsDao API portal"
+            "Gemsdao Lifetime membership",
+            "GemsDao Beta protocols"
         ]
     },
     {
@@ -19,12 +19,12 @@ const memberCards: IMemberCardInfo[] = [
         desc: "2ND Most Rare",
         uri: "/images/Yellow_Diamond.png",
         rares: [
-            "25x weekly + 5x monthly",
+            "4,000 NFTs (4,000 x 1) = 4,000 votes",
             "GemsDao alpha club",
             "GemsDao rewards",
             "GemsDao network",
-            "GemsDao meta pass",
-            "GemsDao API portal"
+            "Gemsdao Lifetime membership",
+            "GemsDao Beta protocols"
         ]
     },
     {
@@ -32,12 +32,12 @@ const memberCards: IMemberCardInfo[] = [
         desc: "3rd Most Rare",
         uri: "/images/Blue_Diamond.png",
         rares: [
-            "25x weekly + 5x monthly",
+            "4,000 NFTs (4,000 x 1) = 4,000 votes",
             "GemsDao alpha club",
             "GemsDao rewards",
             "GemsDao network",
-            "GemsDao meta pass",
-            "GemsDao API portal"
+            "Gemsdao Lifetime membership",
+            "GemsDao Beta protocols"
         ]
     },
     {
@@ -45,12 +45,12 @@ const memberCards: IMemberCardInfo[] = [
         desc: "4th Most Rare",
         uri: "/images/Red_Diamond.png",
         rares: [
-            "25x weekly + 5x monthly",
+            "5,000 NFTs (5,000 x 2) = 10,000 votes",
             "GemsDao alpha club",
             "GemsDao rewards",
             "GemsDao network",
-            "GemsDao meta pass",
-            "GemsDao API portal"
+            "Gemsdao Lifetime membership",
+            "GemsDao Beta protocols"
         ]
     },
     {
@@ -58,12 +58,12 @@ const memberCards: IMemberCardInfo[] = [
         desc: "5th Most Rare",
         uri: "/images/Green_Diamond.png",
         rares: [
-            "25x weekly + 5x monthly",
+            "5,000 NFTs (5,000 x 2) = 10,000 votes",
             "GemsDao alpha club",
             "GemsDao rewards",
             "GemsDao network",
-            "GemsDao meta pass",
-            "GemsDao API portal"
+            "Gemsdao Lifetime membership",
+            "GemsDao Beta protocols"
         ]
     },
     {
@@ -71,25 +71,25 @@ const memberCards: IMemberCardInfo[] = [
         desc: "6th Most Rare",
         uri: "/images/Purple_Diamond.png",
         rares: [
-            "25x weekly + 5x monthly",
+            "6,000 NFTs (6,000 x 4) = 24,000 votes",
             "GemsDao alpha club",
             "GemsDao rewards",
             "GemsDao network",
-            "GemsDao meta pass",
-            "GemsDao API portal"
+            "Gemsdao Lifetime membership",
+            "GemsDao Beta protocols"
         ]
     },
     {
-        title: "Normal Diamond",
-        desc: "Base level membership",
+        title: "White Diamond",
+        desc: "7th Most Rare",
         uri: "/images/Normal_Diamond.png",
         rares: [
-            "25x weekly + 5x monthly",
+            "8,000 NFTs (8,000 x 3) = 24,000 votes",
             "GemsDao alpha club",
             "GemsDao rewards",
             "GemsDao network",
-            "GemsDao meta pass",
-            "GemsDao API portal"
+            "Gemsdao Lifetime membership",
+            "GemsDao Beta protocols"
         ]
     }
 ]

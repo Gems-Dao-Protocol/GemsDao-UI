@@ -10,7 +10,7 @@ export default function Mint({ handleMint }: { handleMint: () => void }) {
                         Mint sold out!
                     </div>
                     <div className="text-white text-[16px] xl:text-[20px] leading-[2] mt-4">
-                        Thanks to everyone for becoming a PREMINT Collector Pass holder! Looking for a pass? Check out secondary listings on OpenSea!
+                        Thanks to everyone for becoming a GEMSDAO Collector Pass holder! Looking for a pass? Check out secondary listings on OpenSea!
                     </div>
                 </div>
                 <div className="w-[200px] sm:w-[320px]">

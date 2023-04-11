@@ -13,10 +13,10 @@ export default function Stats() {
                                 2,370
                             </div>
                             <div className="text-white text-[26px] xl:text-[30px] font-bold uppercase">
-                                Projects
+                                Assets
                             </div>
                             <div className="text-white text-[16px] xl:text-[20px] leading-[2]">
-                                Over 2,300 projects have managed their access lists with PREMINT.
+                                GemsDao has over 7Billion+ in assets pledged to the Protocol . Verification of these assets can be found in the GemsDao vault.
                             </div>
                         </div>
                     </div>
@@ -26,13 +26,13 @@ export default function Stats() {
                         <div className="bg-app-blue-gradient w-[6px] min-w-[6px]"></div>
                         <div className="px-6 xl:px-8 flex flex-col gap-4 xl:gap-6">
                             <div className="text-app-blue-gradient text-[36px] sm:text-[48px]">
-                                1,881,644
+                                10,000
                             </div>
                             <div className="text-white text-[26px] xl:text-[30px] font-bold uppercase">
-                                Registrations
+                                Memberships
                             </div>
                             <div className="text-white text-[16px] xl:text-[20px] leading-[2]">
-                                Projects have registered over 1.8 million entries to their access lists.
+                                Join a community of 10 thousand like minded individuals working with rare earth Gems and metals.
                             </div>
                         </div>
                     </div>
@@ -45,10 +45,10 @@ export default function Stats() {
                                 500,107
                             </div>
                             <div className="text-white text-[26px] xl:text-[30px] font-bold uppercase">
-                                Collectors
+                                Market overview 
                             </div>
                             <div className="text-white text-[16px] xl:text-[20px] leading-[2]">
-                                Half a million wallets have connected to PREMINT to register for lists.
+                                With a current market cap of 100 million+ the decentralization of all Diamond industries will allow for global onboarding and diversification of multiple asset classes.
                             </div>
                         </div>
                     </div>

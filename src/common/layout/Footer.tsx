@@ -25,7 +25,7 @@ export default function Footer() {
                             }
                         </div> */}
                         <div className="text-center text-[20px] sm:text-[24px] text-[#00CEFF]">
-                            <span className='font-bold'>Copyright 2023 GemsDao</span>{` | By NFT people, for NFT people`}
+                            <span className='font-bold'>Copyright 2023 GemsDao</span>{` | By Defi Branding LLC`}
                         </div>
                     </div>
                     <div className="flex gap-4 sm:gap-6">

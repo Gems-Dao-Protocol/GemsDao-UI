@@ -10,13 +10,13 @@ export default function Stats() {
                         <div className="bg-app-blue-gradient w-[6px] min-w-[6px]"></div>
                         <div className="px-6 xl:px-8 flex flex-col gap-4 xl:gap-6">
                             <div className="text-app-blue-gradient text-[36px] sm:text-[48px]">
-                                2,370
+                                7 Billion+
                             </div>
                             <div className="text-white text-[26px] xl:text-[30px] font-bold uppercase">
                                 Assets
                             </div>
                             <div className="text-white text-[16px] xl:text-[20px] leading-[2]">
-                                GemsDao has over 7Billion+ in assets pledged to the Protocol . Verification of these assets can be found in the GemsDao vault.
+                                GemsDao has over 7 Billion+ in assets pledged to the Protocol . Verification of these assets can be found in the GemsDao vault.
                             </div>
                         </div>
                     </div>
@@ -42,13 +42,13 @@ export default function Stats() {
                         <div className="bg-app-blue-gradient w-[6px] min-w-[6px]"></div>
                         <div className="px-6 xl:px-8 flex flex-col gap-4 xl:gap-6">
                             <div className="text-app-blue-gradient text-[36px] sm:text-[48px]">
-                                500,107
+                                100 Billion+
                             </div>
                             <div className="text-white text-[26px] xl:text-[30px] font-bold uppercase">
                                 Market overview 
                             </div>
                             <div className="text-white text-[16px] xl:text-[20px] leading-[2]">
-                                With a current market cap of 100 million+ the decentralization of all Diamond industries will allow for global onboarding and diversification of multiple asset classes.
+                                With a current market cap of 100 Billion+ the decentralization of all rare earth and metal industries will allow for global onboarding and diversification of multiple asset classes.
                             </div>
                         </div>
                     </div>

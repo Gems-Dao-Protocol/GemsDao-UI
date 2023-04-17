@@ -17,10 +17,10 @@ export const HTTP_METHODS: {
 }
 
 export const NFT_CAs: { [chainId in ChainId]?: any } = {
-    [ChainId.Mainnet]: '',
+    [ChainId.Mainnet]: '0x710FF4816f757a2b8D249eB5e68b429898Da500c',
     [ChainId.Goerli]: '0x6243F33eCD4296CADD85bF5Efa89735Fd8C6CE91',
     [ChainId.Sepolia]: '',
-    [ChainId.BSCTestnet]: '0x8250dA68797dc66e71985656185479cebbd3362F'
+    [ChainId.BSCTestnet]: '0xFDf63541170Ab481d85b7e2178d7c4125aFE4bff'
 }
 
 export const UniswapRouterV2_Addresses: { [chainId in ChainId]?: any } = {

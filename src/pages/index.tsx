@@ -1,34 +1,32 @@
-import { useGemsDao } from "@app/contexts"
-import Benefits from "@app/products/home/Benefits"
-import Faq from "@app/products/home/Faq"
-// import Header from "@app/products/home/Header"
-import Intro from "@app/products/home/Intro"
-import Mint from "@app/products/home/Mint"
-import Stats from "@app/products/home/Stats"
-import MintModal from "@app/products/home/components/MintModal"
-import { useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
 
-const Home = () => {
-    const [isOpenMint, setIsOpenMint] = useState(false)
-
-    const handleMint = () => {
-        setIsOpenMint(true)
-    }
-
+export default function Home() {
     return (
-        <div className="w-full flex justify-center flex-1">
-            <div className="w-full bg-app-default flex justify-center">
-                <div className='w-full mx-6 sm:mx-10 lg:w-10/12 lg:mx-0'>
-                    <MintModal isOpen={isOpenMint} handleClose={() => setIsOpenMint(false)} />
-                    <Intro handleMint={handleMint} />
-                    <Stats />
-                    <Benefits />
-                    <Faq />
-                    <Mint handleMint={handleMint} />
-                </div>
-            </div>
+        <div className="w-screen flex flex-col">
+        <div className="w-screen aspect-[1/1.05] relative">
+            <Image src="/images/splash-image-1.png" alt="Splash image" layout="fill" objectFit="cover" useMap="#image_map" className="z-10" />
+
+        <Link href="/#" target="_blank">
+            <div className="z-20 w-[3rem] lg:w-[10rem] aspect-square rounded-full absolute top-[62%] left-[17%] cursor-pointer" />
+        </Link>
         </div>
+        <div className="w-screen aspect-[1/1.05] relative">
+            <Image src="/images/splash-image-2.png" alt="Splash image" layout="fill" objectFit="cover" />
+        </div>
+        <div className="w-screen aspect-[1/1.1] relative">
+            <Image src="/images/splash-image-3.png" alt="Splash image" layout="fill" objectFit="cover" />
+        </div>
+        <div className="w-screen aspect-[1/1.1] relative">
+            <Image src="/images/splash-image-4.png" alt="Splash image" layout="fill" objectFit="cover" className="z-10" />
+
+            <Link href="/#" target="_blank">
+                <div className="z-20 w-[10rem] lg:w-[34rem] h-[3rem] lg:h-[8rem] rounded-[10px] absolute bottom-[7.2%] left-[50%] -translate-x-[50%] cursor-pointer" />
+            </Link>
+        </div>
+    </div>
     );
 };
 
-export default Home
+Home.variant = 'splash'
+

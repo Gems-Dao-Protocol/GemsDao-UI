@@ -5,11 +5,25 @@ import { useMediaQuery } from "@mui/material"
 import Footer from "./Footer"
 import Header from "./Header"
 
-export default function Layout({ children }: PropsWithChildren<{}>) {
+export default function Layout({ children, variant }: PropsWithChildren<{variant: string}>) {
   const router = useRouter()
+  console.log({variant})
 
   const routeMatch = (path: string) => {
     return router.pathname === path
+  }
+
+  if(variant === 'splash') {
+
+    return (
+      <>
+      <Head>
+        <title>Gems Dao</title>
+        <link rel="icon" href="/logo.png" />
+      </Head>
+      {children}
+      </>
+    )
   }
 
   return (

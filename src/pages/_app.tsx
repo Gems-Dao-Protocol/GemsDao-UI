@@ -33,6 +33,7 @@ import { ToastContainer } from 'react-toastify'
 
 interface WolfAppProps extends AppProps {
   emotionCache?: EmotionCache;
+  Component: any;
 }
 
 const clientSideEmotionCache = createEmotionCache();
@@ -76,7 +77,7 @@ function MyApp({
           <RefreshContextProvider>
             <GemsDaoProvider>
               <CssBaseline />
-              <Layout>
+              <Layout variant={Component.variant}>
                 <Component {...pageProps} />
               </Layout>
               <ToastContainer />

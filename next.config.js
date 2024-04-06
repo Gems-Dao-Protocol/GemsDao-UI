@@ -1,14 +1,42 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  productionBrowserSourceMaps: false,
-  swcMinify: true,
-  env: {
-    GIT_REPO_ACCESS_TOKEN: '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',
-    PARTNER_TOKENS_URL: 'https://api.github.com/repos/Crogecoin/scale-management/contents/scaleswap_partner_tokens.json',
-    SENDGRID_API_KEY: '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',
-    CONTACT_EMAIL: 'scaleswapcroge@gmail.com'
-  },
-}
+/**
+ * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful
+ * for Docker builds.
+ */
+await import("./src/env.js");
 
-module.exports = nextConfig
+/** @type {import("next").NextConfig} */
+const config = {
+  reactStrictMode: true,
+
+  /**
+   * If you are using `appDir` then you must comment the below `i18n` config out.
+   *
+   * @see https://github.com/vercel/next.js/issues/41980
+   */
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
+
+  /** Allow any images in the <Image /> Component */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+      {
+        protocol: "http",
+        hostname: "**",
+      },
+    ],
+  },
+  webpack: (config) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    config.resolve.fallback = { fs: false, path: false };
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return config;
+  },
+};
+
+export default config;

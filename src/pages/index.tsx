@@ -1,32 +1,42 @@
-import Image from "next/image"
-import Link from "next/link"
+import Head from "next/head";
+import Image from "next/image";
+import { Toaster } from "react-hot-toast";
+import SEO from "~/components/seo";
 
-export default function Home() {
-    return (
-        <div className="w-screen flex flex-col">
-        <div className="w-screen aspect-[1/1.05] relative">
-            <Image src="/images/splash-image-1.png" alt="Splash image" layout="fill" objectFit="cover" useMap="#image_map" className="z-10" />
-
-        <Link href="/#" target="_blank">
-            <div className="z-20 w-[3rem] lg:w-[10rem] aspect-square rounded-full absolute top-[62%] left-[17%] cursor-pointer" />
-        </Link>
+export default function Index() {
+  return (
+    <>
+      <Head>
+        <title>Gems Dao</title>
+        <link rel="icon" href="/favicon.png" />
+      </Head>
+      <SEO />
+      <Toaster />
+      <div className="relative h-screen w-screen overflow-hidden bg-black">
+        <div className="relative z-10 h-screen w-screen overflow-hidden">
+          <div className="absolute z-30 flex h-full w-full items-center justify-center">
+            {/* <h1 className="font-bold md:text-7xl">Coming Soon</h1> */}
+            <Image
+              src="/images/loading-gems.webp"
+              alt="Loading..."
+              className="h-9 w-auto md:h-20"
+              width={512}
+              height={99}
+            />
+          </div>
+          <div className="absolute left-1/2 z-20 h-full w-[180%] -translate-x-1/2 lg:w-full">
+            <video
+              className="h-full w-full object-contain"
+              autoPlay={true}
+              playsInline
+              loop
+              muted
+            >
+              <source src="/images/loading-gems.mp4" type="video/mp4" />
+            </video>
+          </div>
         </div>
-        <div className="w-screen aspect-[1/1.05] relative">
-            <Image src="/images/splash-image-2.png" alt="Splash image" layout="fill" objectFit="cover" />
-        </div>
-        <div className="w-screen aspect-[1/1.1] relative">
-            <Image src="/images/splash-image-3.png" alt="Splash image" layout="fill" objectFit="cover" />
-        </div>
-        <div className="w-screen aspect-[1/1.1] relative">
-            <Image src="/images/splash-image-4.png" alt="Splash image" layout="fill" objectFit="cover" className="z-10" />
-
-            <Link href="/#" target="_blank">
-                <div className="z-20 w-[10rem] lg:w-[34rem] h-[3rem] lg:h-[8rem] rounded-[10px] absolute bottom-[7.2%] left-[50%] -translate-x-[50%] cursor-pointer" />
-            </Link>
-        </div>
-    </div>
-    );
-};
-
-Home.variant = 'splash'
-
+      </div>
+    </>
+  );
+}

@@ -23,7 +23,7 @@ export const getTokenBalance = async (
 ): Promise<{ tokenBalance: RpcResponseAndContext<TokenAmount> }> => {
   if (!pubKey || !tokenAddress) return { tokenBalance: emptyTokenBalance };
 
-  console.log(`getTokenBalance called with ${pubKey} and ${tokenAddress}`);
+  // console.log(`getTokenBalance called with ${pubKey} and ${tokenAddress}`);
 
   if (tokenAddress === "So11111111111111111111111111111111111111112") {
     const balance = await helius.connection.getBalance(pubKey);

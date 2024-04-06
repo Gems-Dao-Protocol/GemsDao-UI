@@ -26,7 +26,7 @@ async function sendTransactionWithPriorityFee(
   let tryAgain = true;
   let objSignatureStatusResult;
   let maxTriesCounter = 0;
-  let maxTries = 10;
+  const maxTries = 10;
   let txid = "";
 
   while (tryAgain) {
@@ -46,7 +46,8 @@ async function sendTransactionWithPriorityFee(
       searchTransactionHistory: true,
     });
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    objSignatureStatusResult = JSON.parse(JSON.stringify(result));
+    // objSignatureStatusResult = JSON.parse(JSON.stringify(result));
+    objSignatureStatusResult = result;
     if (objSignatureStatusResult.value !== null) {
       // tryAgain = false;
       console.log(
@@ -58,7 +59,9 @@ async function sendTransactionWithPriorityFee(
     if (maxTriesCounter > maxTries) tryAgain = false;
   }
 
-  console.log(`Transaction ${txid} failed: ${objSignatureStatusResult.err}`);
+  console.log(
+    `Transaction ${txid} failed to confirm or after ${maxTries} tries`,
+  );
   return null;
 }
 

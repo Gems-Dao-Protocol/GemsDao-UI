@@ -30,6 +30,7 @@
     "@trpc/next": "^10.45.2",
     "@trpc/react-query": "^10.45.2",
     "@trpc/server": "^10.45.2",
+    "@wormhole-foundation/wormhole-connect": "^0.3.3",
     "axios": "^1.6.8",
     "bs58": "^5.0.0",
     "class-variance-authority": "^0.7.0",

@@ -40,3 +40,6 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# Don't push the ecosystem page
+/Users/jake/Github/GemsDao-UI/src/pages/ecosystem.tsx

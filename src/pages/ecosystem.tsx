@@ -16,7 +16,7 @@ export default function Ecosystem() {
     <Layout>
       <div className="relative">
         <BackgroundRings className="top-20 md:top-0" />
-        <div className="relative space-y-16 py-24 md:space-y-60 md:py-52">
+        <div className="relative space-y-16 py-28 md:space-y-60 md:py-52">
           <HomeHeader title="The first Defi Ecosystem Powered By Memefi. Focused On Rwa And Mining" />
           <HomeIntro />
           <HomeProducts

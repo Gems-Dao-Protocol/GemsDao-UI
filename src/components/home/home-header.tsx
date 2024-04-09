@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const HomeHeader = ({ title, text }: { title: string; text?: string }) => {
   return (
-    <div className="mx-auto flex max-w-4xl flex-col items-center space-y-10 overflow-hidden text-center">
+    <div className="mx-auto flex max-w-4xl flex-col items-center space-y-4 overflow-hidden text-center md:space-y-10">
       <h2 className="inline-block bg-gradient-to-t from-[#8E43AD] to-[#19e668] bg-clip-text text-3xl font-bold uppercase text-transparent md:text-6xl md:leading-tight">
         {title}
       </h2>

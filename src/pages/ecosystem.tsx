@@ -77,11 +77,11 @@ export default function Ecosystem() {
             reverse
           />
         </div>
-        <div className="flex justify-center pb-10 md:hidden">
+        <div className="flex justify-center pb-10">
           <img
             height="36"
             width="36"
-            className="h-16 w-auto"
+            className="h-16 w-auto md:h-32"
             src="/images/logo.png"
             alt="Gems DAO"
           />

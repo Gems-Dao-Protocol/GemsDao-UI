@@ -2,7 +2,7 @@ function Footer() {
   return (
     <footer className="mt-10 flex items-center border-t border-t-[#000] py-4 md:h-24">
       <div className="mx-auto flex w-full max-w-7xl justify-between px-4">
-        <p>Copyright © 2024 GemsDAO</p>
+        <p className="text-text-gray">Copyright © 2024 GemsDAO</p>
         <ul className="flex items-center gap-x-4">
           <li className="h-6 w-6">
             <svg

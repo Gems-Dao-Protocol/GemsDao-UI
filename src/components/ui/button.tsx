@@ -18,6 +18,7 @@ const buttonVariants = cva(
         ghost: "",
         link: "text-primary underline-offset-4 hover:underline",
         solana: "bg-gradient-to-r from-[#875CFF] via-[#FF5995] to-[#FFD911]",
+        solanaTwo: "bg-gradient-to-r from-[#7C51AF] via-[#28638E] to-[#F7EC48]",
         green: "bg-gradient-to-t from-[#52FF4F] to-[#6BFFB0]",
       },
       size: {

@@ -12,7 +12,7 @@ const HomeHeader = ({ title, text }: { title: string; text?: string }) => {
         className="relative z-10 flex h-12 w-48 items-center justify-center rounded-xl px-6 font-bold text-black md:h-20 md:w-80 md:text-2xl"
         style={{
           background:
-            "linear-gradient(90deg, #875CFF 0%, #FF5995 39%, #FFD911 68%, #45FF9C 100%)",
+            "linear-gradient(90deg, #7C51AF 0%, #28638E 39%, #F7EC48 68%, #82EF5B 100%)",
         }}
       >
         Launch App

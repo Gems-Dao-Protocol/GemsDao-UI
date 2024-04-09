@@ -8,14 +8,6 @@ const HomeFeatureSection = () => {
       <HomeFeature
         title="Decentralization at the core"
         text="Gems DAO stands at the forefront of innovation, intersecting the realms of Memefi, DeFi, and NFTs to forge a new paradigm in hybrid decentralized finance. Initially centered around diamond mining, Gems DAO's vision extends to encompassing various analogous mining operations. By doing so, Gems DAO aims to inject deeper liquidity and yield into the DeFi ecosystem through Real World Assets (RWA).  The first meme powered Defi ecosystem."
-        button={
-          <Link
-            href="#"
-            className="mx-auto flex h-12 w-64 items-center justify-center rounded-xl border-2 border-[#2A2A2A] bg-[#131313] text-center md:mx-0"
-          >
-            Learn More
-          </Link>
-        }
         svg={
           <svg
             width="283"
@@ -48,14 +40,6 @@ const HomeFeatureSection = () => {
       <HomeFeature
         title="On-chain, transparent governance"
         text="In our drive towards decentralized Real World Assets (RWAs), we're employing a hybrid DAO model. Token holders utilize on-chain governance for transparent decision-making, while off-chain coordination handles practicalities such as legal compliance, ensuring efficiency and inclusivity as we democratize access to RWAs."
-        button={
-          <Link
-            href="#"
-            className="mx-auto flex h-12 w-64 items-center justify-center rounded-xl border-2 border-[#2A2A2A] bg-[#131313] text-center md:mx-0"
-          >
-            Learn More
-          </Link>
-        }
         svg={
           <svg
             width="304"
@@ -97,8 +81,8 @@ const HomeFeature = ({
   reverse,
 }: {
   title: string;
-  text: string;
-  button: React.ReactNode;
+  text?: string;
+  button?: React.ReactNode;
   svg: React.ReactNode;
   reverse?: boolean;
 }) => {
@@ -129,7 +113,7 @@ const HomeFeature = ({
         <h5 className="bg-gradient-to-t from-[#2ECC70] to-[#A463BF] bg-clip-text text-3xl font-bold uppercase text-transparent md:text-5xl">
           {title}
         </h5>
-        <p className="text-text-gray md:text-2xl">{text}</p>
+        {text && <p className="text-text-gray md:text-2xl">{text}</p>}
         {button}
       </div>
     </div>

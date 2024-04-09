@@ -112,10 +112,10 @@ export function MobileNav({
                 className="flex h-12 items-center justify-center rounded-xl px-6 font-bold text-black"
                 style={{
                   background:
-                    "linear-gradient(90deg, #875CFF 0%, #FF5995 39%, #FFD911 68%, #45FF9C 100%)",
+                    "linear-gradient(90deg, #7C51AF 0%, #28638E 39%, #F7EC48 68%, #82EF5B 100%)",
                 }}
               >
-                Launch App
+                Start Trading
               </Link>
             )}
           </div>

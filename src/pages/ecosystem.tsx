@@ -81,7 +81,7 @@ export default function Ecosystem() {
           <img
             height="36"
             width="36"
-            className="h-16 w-auto md:h-32"
+            className="h-12 w-auto md:h-14"
             src="/images/logo.png"
             alt="Gems DAO"
           />

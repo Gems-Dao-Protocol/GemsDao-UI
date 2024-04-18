@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import { cn } from "~/utils/cn";
 

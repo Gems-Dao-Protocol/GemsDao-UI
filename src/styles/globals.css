@@ -19,29 +19,6 @@ body {
   }
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-:root {
-  --spinner-body-bg: #d1d8e0;
-  --spinner-animation-speed: 10s;
-  --spinner-color: #8854d0;
-}
-
-.spinner {
-  animation: spin var(--spinner-animation-speed) linear infinite;
-}
-
-.spinner .spinner-gradient-stop {
-  stop-color: var(--spinner-color);
-}
-
 .toggle {
   display: block;
   text-align: center;

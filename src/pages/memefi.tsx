@@ -129,7 +129,8 @@ export default function Home() {
               height={48}
             />
           </div> */}
-          <div
+          {/* Presale Address below. Uncomment when ready. TRIPLE CHECK ADDRESS */}
+          {/* <div
             className="absolute bottom-[14%] left-[47%] z-20 flex w-10/12 -translate-x-[50%] cursor-pointer flex-col items-center"
             onClick={async () => {
               await copyToClipboard(
@@ -144,7 +145,7 @@ export default function Home() {
             <span className="text-[.4rem] font-[800] text-[#11F121] lg:text-2xl">
               43HTu8rWAoCjXq9hafbHHgqwsQuiJCJRu8mRRFvxP6yW
             </span>
-          </div>
+          </div> */}
         </div>
         <div className="relative aspect-[1/1.1] w-screen">
           <Image

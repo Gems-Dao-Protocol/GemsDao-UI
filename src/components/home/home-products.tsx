@@ -31,7 +31,7 @@ const HomeProducts = ({ title, text }: { title: string; text: string }) => {
           text="An opensource crosschain RWA focused decentralized exchange built on Solana."
           image="/images/app-logo.png"
           buttonText="Start Trading"
-          buttonLink="#"
+          buttonLink="/"
         />
         <HomeProduct
           number={20}

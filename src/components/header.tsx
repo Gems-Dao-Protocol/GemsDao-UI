@@ -3,11 +3,12 @@ import { MobileNav } from "./mobile-menu";
 
 const links = [
   {
-    id: 1,
+    id: 0,
     name: "Ecosystem",
     url: "/",
   },
-  { id: 0, name: "Memefi", url: "/memefi" },
+  { id: 1, name: "Memefi", url: "/memefi" },
+  { id: 2, name: "Vote", url: "/vote" },
 ];
 
 function Header() {

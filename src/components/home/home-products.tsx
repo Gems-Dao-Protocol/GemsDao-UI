@@ -40,7 +40,7 @@ const HomeProducts = ({ title, text }: { title: string; text: string }) => {
           imageSize={140}
           text="Vote and participate in decentralized governance for the advancement of the Gemsdao ecosystem."
           buttonText="Governance"
-          buttonLink="#"
+          buttonLink="/vote"
         />
         <HomeProduct
           number={10}

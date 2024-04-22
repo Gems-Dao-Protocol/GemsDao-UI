@@ -22,6 +22,20 @@ export function MobileNav({
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
+      <MobileLink
+        href="/"
+        className="flex w-full items-center justify-between"
+        onOpenChange={setOpen}
+      >
+        <h1 className="sr-only">Gems DAO</h1>
+        <img
+          height="36"
+          width="36"
+          className="h-12 w-auto"
+          src="/images/logo.png"
+          alt="Gems DAO"
+        />
+      </MobileLink>
       <SheetTrigger asChild>
         <Button
           variant="ghost"
@@ -32,7 +46,7 @@ export function MobileNav({
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+            className="h-5 w-5 rotate-180"
           >
             <path
               d="M3 5H11"
@@ -59,32 +73,7 @@ export function MobileNav({
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <MobileLink href="/" className="flex items-center" onOpenChange={setOpen}>
-        {app ? (
-          <>
-            <h1 className="sr-only">Gems DAO</h1>
-            <img
-              height="36"
-              width="36"
-              className="h-8 w-auto"
-              src="/images/app-logo.png"
-              alt="Gems DAO"
-            />
-          </>
-        ) : (
-          <>
-            <h1 className="sr-only">Gems DAO</h1>
-            <img
-              height="36"
-              width="36"
-              className="h-12 w-auto"
-              src="/images/logo.png"
-              alt="Gems DAO"
-            />
-          </>
-        )}
-      </MobileLink>
-      <SheetContent side="left" className="border-[#2a2a2a] bg-black">
+      <SheetContent side="right" className="border-[#2a2a2a] bg-black">
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10">
           <div className="flex flex-col space-y-2">
             {links.map((item) => (

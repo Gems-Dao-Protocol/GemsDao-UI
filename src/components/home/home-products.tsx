@@ -2,6 +2,13 @@
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import { cn } from "~/utils/cn";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "~/components/ui/carousel";
 
 const HomeProducts = ({ title, text }: { title: string; text: string }) => {
   const { ref, inView } = useInView({
@@ -24,35 +31,71 @@ const HomeProducts = ({ title, text }: { title: string; text: string }) => {
         </h4>
         <p className="text-text-gray md:text-2xl md:leading-9">{text}</p>
       </div>
-      <div className="grid max-w-7xl gap-6 md:grid-cols-3">
-        <HomeProduct
-          number={32}
-          title="Trade"
-          text="An opensource crosschain RWA focused decentralized exchange built on Solana."
-          image="/images/app-logo.png"
-          buttonText="Start Trading"
-          buttonLink="/"
-        />
-        <HomeProduct
-          number={20}
-          title="DAO"
-          image="/images/dao-panel.png"
-          imageSize={140}
-          text="Vote and participate in decentralized governance for the advancement of the Gemsdao ecosystem."
-          buttonText="Governance"
-          buttonLink="/vote"
-        />
-        <HomeProduct
-          number={10}
-          title="RWA Vaults"
-          text="Coming soon"
-          buttonText="Coming soon"
-          buttonLink="#"
-        />
+      <div className="hidden max-w-7xl gap-6 md:grid md:grid-cols-3">
+        {homeProducts.map((product) => (
+          <HomeProduct
+            key={product.title}
+            number={product.number}
+            title={product.title}
+            text={product.text}
+            image={product.image}
+            buttonText={product.buttonText}
+            buttonLink={product.buttonLink}
+          />
+        ))}
+      </div>
+      <div className="block md:hidden">
+        <Carousel>
+          <CarouselContent>
+            {homeProducts.map((product) => (
+              <CarouselItem key={product.title}>
+                <HomeProduct
+                  number={product.number}
+                  title={product.title}
+                  text={product.text}
+                  image={product.image}
+                  buttonText={product.buttonText}
+                  buttonLink={product.buttonLink}
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="mt-4 flex items-center justify-center space-x-2">
+            <CarouselPrevious className="relative left-0 top-0 translate-x-0 translate-y-0" />
+            <CarouselNext className="relative left-0 top-0 translate-x-0 translate-y-0" />
+          </div>
+        </Carousel>
       </div>
     </div>
   );
 };
+
+const homeProducts = [
+  {
+    number: 32,
+    title: "Trade",
+    text: "An opensource crosschain RWA focused decentralized exchange built on Solana.",
+    image: "/images/app-logo.png",
+    buttonText: "Start Trading",
+    buttonLink: "/",
+  },
+  {
+    number: 20,
+    title: "DAO",
+    text: "Vote and participate in decentralized governance for the advancement of the Gemsdao ecosystem.",
+    image: "/images/dao-panel.png",
+    imageSize: 140,
+    buttonText: "Governance",
+    buttonLink: "/vote",
+  },
+  {
+    number: 10,
+    title: "RWA Vaults",
+    text: "Coming soon",
+    buttonText: "Coming soon",
+    buttonLink: "#",
+  },
+];
 
 const HomeProduct = ({
   number,
@@ -80,8 +123,8 @@ const HomeProduct = ({
   return (
     <div
       className={cn(
-        inView ? `top-0 opacity-100` : `-top-${number} opacity-0`,
-        "relative flex flex-col items-center justify-between space-y-10 overflow-hidden rounded-2xl border-2 border-[#2D2D2D] px-10 pb-8 pt-10 transition-all duration-1000 ease-in",
+        inView ? `top-0 opacity-100` : `top-0 md:-top-${number} opacity-0`,
+        "relative flex flex-col items-center justify-between space-y-10 overflow-hidden rounded-2xl border-2 border-[#2D2D2D] px-10 pb-8 pt-10 duration-1000 ease-in md:transition-all",
       )}
       style={{
         background: "rgba(197, 197, 197, 0.08)",

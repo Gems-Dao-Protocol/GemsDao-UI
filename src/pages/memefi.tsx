@@ -8,6 +8,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [inverse, setInverse] = useState(true);
+  const PRESALE_ADDRESS = "43HTu8rWAoCjXq9hafbHHgqwsQuiJCJRu8mRRFvxP6yW";
 
   const copyToClipboard = async (
     text: string,
@@ -134,7 +135,7 @@ export default function Home() {
             className="absolute bottom-[14%] left-[47%] z-20 flex w-10/12 -translate-x-[50%] cursor-pointer flex-col items-center"
             onClick={async () => {
               await copyToClipboard(
-                "43HTu8rWAoCjXq9hafbHHgqwsQuiJCJRu8mRRFvxP6yW",
+                PRESALE_ADDRESS,
                 "Address successfully copied",
               );
             }}
@@ -143,7 +144,7 @@ export default function Home() {
               Pre Sale Wallet
             </span>
             <span className="text-[.4rem] font-[800] text-[#11F121] lg:text-2xl">
-              43HTu8rWAoCjXq9hafbHHgqwsQuiJCJRu8mRRFvxP6yW
+              {PRESALE_ADDRESS}
             </span>
           </div> */}
         </div>

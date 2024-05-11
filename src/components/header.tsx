@@ -8,7 +8,7 @@ const links = [
     url: "/",
   },
   { id: 1, name: "Memefi", url: "/memefi" },
-  { id: 2, name: "Vote", url: "/vote" },
+  { id: 2, name: "Vote", url: "/loading" },
 ];
 
 function Header() {

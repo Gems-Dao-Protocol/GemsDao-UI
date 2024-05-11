@@ -59,7 +59,7 @@ const HomeIntro = () => {
         </motion.svg>
       </div>
       <div className="w-[260px] space-y-4 text-center">
-        <h3 className="text-4xl font-bold md:text-6xl">$19.4M</h3>
+        <h3 className="text-4xl font-bold md:text-6xl">TBD</h3>
         <p className="text-text-gray md:text-2xl">TVL in GemsDAO products</p>
       </div>
     </div>

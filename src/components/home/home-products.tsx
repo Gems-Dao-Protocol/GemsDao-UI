@@ -77,7 +77,7 @@ const homeProducts = [
     text: "An opensource crosschain RWA focused decentralized exchange built on Solana.",
     image: "/images/app-logo.png",
     buttonText: "Start Trading",
-    buttonLink: "/",
+    buttonLink: "https://xaox.trade/",
   },
   {
     number: 20,
@@ -86,14 +86,14 @@ const homeProducts = [
     image: "/images/dao-panel.png",
     imageSize: 140,
     buttonText: "Governance",
-    buttonLink: "/vote",
+    buttonLink: "/loading",
   },
   {
     number: 10,
     title: "RWA Vaults",
     text: "Coming soon",
     buttonText: "Coming soon",
-    buttonLink: "#",
+    buttonLink: "/loading",
   },
 ];
 
@@ -179,6 +179,7 @@ const HomeProduct = ({
             background:
               "linear-gradient(360deg, rgba(0, 0, 0, 0.93) 11.2%, rgb(63, 61, 61) 78.9%)",
           }}
+          target="_blank"
         >
           {buttonText}
         </Link>

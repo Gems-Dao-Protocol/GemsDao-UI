@@ -8,12 +8,13 @@ const HomeHeader = ({ title, text }: { title: string; text?: string }) => {
       </h2>
       {text && <p className="md:text-2xl md:leading-9">{text}</p>}
       <Link
-        href="/"
+        href="https://xaox.trade/"
         className="relative z-10 flex h-12 w-48 items-center justify-center rounded-xl px-6 font-bold text-black md:h-20 md:w-80 md:text-2xl"
         style={{
           background:
             "linear-gradient(90deg, #7C51AF 0%, #28638E 39%, #F7EC48 68%, #82EF5B 100%)",
         }}
+        target="_blank"
       >
         Launch App
         <svg

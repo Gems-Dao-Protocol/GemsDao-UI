@@ -80,12 +80,13 @@ export function MainNav({
               })}
               {!app && (
                 <Link
-                  href="/"
+                  href="https://xaox.trade/"
                   className="flex h-12 items-center justify-center rounded-xl px-6 font-bold text-black"
                   style={{
                     background:
                       "linear-gradient(90deg, #7C51AF 0%, #28638E 39%, #F7EC48 68%, #82EF5B 100%)",
                   }}
+                  target="_blank"
                 >
                   Start Trading
                 </Link>

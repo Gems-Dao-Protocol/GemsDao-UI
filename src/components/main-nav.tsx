@@ -80,7 +80,7 @@ export function MainNav({
               })}
               {!app && (
                 <Link
-                  href="https://xaox.trade/"
+                  href="https://xaox.vercel.app/"
                   className="flex h-12 items-center justify-center rounded-xl px-6 font-bold text-black"
                   style={{
                     background:

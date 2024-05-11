@@ -77,7 +77,7 @@ const homeProducts = [
     text: "An opensource crosschain RWA focused decentralized exchange built on Solana.",
     image: "/images/app-logo.png",
     buttonText: "Start Trading",
-    buttonLink: "https://xaox.trade/",
+    buttonLink: "https://xaox.vercel.app/",
   },
   {
     number: 20,
@@ -92,6 +92,8 @@ const homeProducts = [
     number: 10,
     title: "RWA Vaults",
     text: "Coming soon",
+    image: "/images/arctic_vaults.jpeg",
+    imageSize: 200,
     buttonText: "Coming soon",
     buttonLink: "/loading",
   },

@@ -95,7 +95,7 @@ const homeProducts = [
     image: "/images/arctic_vaults.jpeg",
     imageSize: 200,
     buttonText: "Coming soon",
-    buttonLink: "/loading",
+    buttonLink: "https://www.arktyke.xyz/",
   },
 ];
 

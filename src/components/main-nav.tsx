@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "~/utils/cn";
 
 import dynamic from "next/dynamic";
+import { XAOX_URL } from "~/utils/site-addresses";
 
 const WalletMultiButtonDynamic = dynamic(
   async () =>
@@ -80,7 +81,7 @@ export function MainNav({
               })}
               {!app && (
                 <Link
-                  href="https://www.xaox.trade/"
+                  href={XAOX_URL}
                   className="flex h-12 items-center justify-center rounded-xl px-6 font-bold text-black"
                   style={{
                     background:

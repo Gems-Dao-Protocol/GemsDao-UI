@@ -9,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "~/components/ui/carousel";
+import { ARKTYKE_URL, XAOX_URL } from "~/utils/site-addresses";
 
 const HomeProducts = ({ title, text }: { title: string; text: string }) => {
   const { ref, inView } = useInView({
@@ -77,7 +78,7 @@ const homeProducts = [
     text: "An opensource crosschain RWA focused decentralized exchange built on Solana.",
     image: "/images/app-logo.png",
     buttonText: "Start Trading",
-    buttonLink: "https://www.xaox.trade/",
+    buttonLink: XAOX_URL,
   },
   {
     number: 20,
@@ -95,7 +96,7 @@ const homeProducts = [
     image: "/images/arctic_vaults.jpeg",
     imageSize: 200,
     buttonText: "Coming soon",
-    buttonLink: "https://www.arktyke.xyz/",
+    buttonLink: ARKTYKE_URL,
   },
 ];
 

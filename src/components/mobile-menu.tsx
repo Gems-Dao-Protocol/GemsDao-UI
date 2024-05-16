@@ -6,6 +6,7 @@ import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Button } from "./ui/button";
 import { ScrollArea } from "./ui/scroll-area";
 import { cn } from "~/utils/cn";
+import { XAOX_URL } from "~/utils/site-addresses";
 
 export function MobileNav({
   app,
@@ -97,7 +98,7 @@ export function MobileNav({
               </Button>
             ) : (
               <Link
-                href="https://www.xaox.trade/"
+                href={XAOX_URL}
                 className="flex h-12 items-center justify-center rounded-xl px-6 font-bold text-black"
                 style={{
                   background:
